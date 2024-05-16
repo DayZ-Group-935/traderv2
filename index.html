@@ -877,50 +877,23 @@ document.addEventListener("DOMContentLoaded", function () {
   populateRoles();
   attachEventListeners();
 
-  function populateBuyButtons(items, container, isTopCategory = false) {
-    container.innerHTML = "";
-    Object.keys(items).forEach((category) => {
-      let button = document.createElement("button");
-      button.textContent = category;
-      button.className = "item-button";
-      if (Array.isArray(items[category])) {
-        button.onclick = () => {
-          container.innerHTML = "";
-          items[category].forEach((item) => {
-            let itemButton = document.createElement("button");
-            itemButton.textContent = item.name;
-            itemButton.className = "item-button";
-            itemButton.onclick = () => handleBuyItemClick(item);
-            container.appendChild(itemButton);
-          });
-          addReturnButton(container, false);
-        };
-      } else {
-        button.onclick = () => {
-          populateBuyButtons(items[category], container, false);
-        };
-      }
-      container.appendChild(button);
-    });
-    if (!isTopCategory) addReturnButton(container, false);
-  }
 
   function handleBuyItemClick(item) {
-    const buyItemButtonsDiv = document.getElementById("buyItemButtons");
-    clearItemButtons(buyItemButtonsDiv);
-    if (item.bulkOptions) {
-      populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv);
-    } else if (item.name === "IED Complete") {
-      addItemToSummary("IED Container", 1, 400, buySummaryDiv);
-      addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
-      addItemToSummary("Detonator", 1, 100, buySummaryDiv);
-      populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
-    } else {
-      addItemToSummary(item.name, 1, item.price, buySummaryDiv);
-      populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
-    }
+  const buyItemButtonsDiv = document.getElementById("buyItemButtons");
+  clearItemButtons(buyItemButtonsDiv);
+  if (item.bulkOptions) {
+    populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv);
+  } else if (item.name === "IED Complete") {
+    addItemToSummary("IED Container", 1, 400, buySummaryDiv);
+    addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
+    addItemToSummary("Detonator", 1, 100, buySummaryDiv);
+    populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
+  } else {
+    addItemToSummary(item.name, 1, item.price, buySummaryDiv);
+    // Remove this line to prevent going back to the top category
+    // populateBuyButtons(buyitems, buyItemButtonsDiv, true); 
   }
-
+}
   function handleSellItemClick(itemName) {
     const itemButtonsDiv = document.getElementById("itemButtons");
     clearItemButtons(itemButtonsDiv);
@@ -978,21 +951,51 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function addReturnButton(container, isTopCategory = false) {
-    if (!isTopCategory) {
-      let returnButton = document.createElement("button");
-      returnButton.textContent = "←";
-      returnButton.className = "return-button";
-      returnButton.onclick = () => {
-        clearItemButtons(container);
-        if (container.id === "buyItemButtons") {
-          populateBuyButtons(buyitems, container, true);
-        } else {
-          populateSellButtons();
-        }
-      };
-      container.appendChild(returnButton);
-    }
+  if (!isTopCategory) {
+    let returnButton = document.createElement("button");
+    returnButton.textContent = "←";
+    returnButton.className = "return-button";
+    returnButton.onclick = () => {
+      clearItemButtons(container);
+      if (container.id === "buyItemButtons") {
+        const previousCategory = container.dataset.previousCategory || buyitems;
+        populateBuyButtons(previousCategory, container, true);
+      } else {
+        populateSellButtons();
+      }
+    };
+    container.appendChild(returnButton);
   }
+}
+
+function populateBuyButtons(items, container, isTopCategory = false, parentCategory = null) {
+  container.innerHTML = "";
+  container.dataset.previousCategory = parentCategory; // Store the previous category
+  Object.keys(items).forEach((category) => {
+    let button = document.createElement("button");
+    button.textContent = category;
+    button.className = "item-button";
+    if (Array.isArray(items[category])) {
+      button.onclick = () => {
+        container.innerHTML = "";
+        items[category].forEach((item) => {
+          let itemButton = document.createElement("button");
+          itemButton.textContent = item.name;
+          itemButton.className = "item-button";
+          itemButton.onclick = () => handleBuyItemClick(item);
+          container.appendChild(itemButton);
+        });
+        addReturnButton(container, false);
+      };
+    } else {
+      button.onclick = () => {
+        populateBuyButtons(items[category], container, false, items); // Pass the current category
+      };
+    }
+    container.appendChild(button);
+  });
+  if (!isTopCategory) addReturnButton(container, false);
+}
 
   function clearItemButtons(itemButtonsDiv) {
     itemButtonsDiv.innerHTML = "";
