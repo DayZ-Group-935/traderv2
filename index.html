@@ -978,31 +978,6 @@ const roles = {
     addReturnButton(container, "sell");
   }
 
-  function addReturnButton(container, type) {
-    let returnButton = document.createElement("button");
-    returnButton.textContent = "←";
-    returnButton.className = "return-button";
-    returnButton.onclick = () => {
-      if (type === "buy") {
-        if (buyNavigationStack.length > 1) {
-          buyNavigationStack.pop(); // Remove the current level from the stack
-          const previousCategory = buyNavigationStack[buyNavigationStack.length - 1];
-          populateBuyButtons(previousCategory, container, buyNavigationStack.length === 1);
-        } else {
-          populateBuyButtons(buyitems, container, true); // Return to top level if stack is empty
-        }
-      } else if (type === "sell") {
-        if (sellNavigationStack.length > 1) {
-          sellNavigationStack.pop(); // Remove the current level from the stack
-          populateSellButtons(); // Return to sell items list
-        } else {
-          populateSellButtons(); // Return to top level if stack is empty
-        }
-      }
-    };
-    container.appendChild(returnButton);
-  }
-
   function clearItemButtons(itemButtonsDiv) {
     itemButtonsDiv.innerHTML = "";
   }
@@ -1097,25 +1072,51 @@ const roles = {
   }
 
   function populatePeltButtons(itemButtonsDiv, peltItems) {
-    clearItemButtons(itemButtonsDiv);
-    peltItems.forEach((pelt) => {
-      let button = document.createElement("button");
-      button.textContent = pelt.name;
-      button.className = "item-button";
-      button.onclick = () =>
-        addItemToSummary(pelt.name, 1, pelt.price, sellSummaryDiv);
-      itemButtonsDiv.appendChild(button);
-    });
-    createButton(itemButtonsDiv, "Role Turn-In", () => {
-      addItemToSummary("Bear Pelt", 6, 800, sellSummaryDiv);
-      addItemToSummary("Wolf Pelt", 12, 400, sellSummaryDiv);
-      addItemToSummary("Boar Pelt", 6, 500, sellSummaryDiv);
-      addItemToSummary("Deer Pelt", 20, 300, sellSummaryDiv);
-      alert("Remember to collect 5 rabbit pelts too!");
-    });
-    addReturnButton(itemButtonsDiv, false);
-  }
+  sellNavigationStack.push(sellitems); // Push the current sell items to the navigation stack
+  clearItemButtons(itemButtonsDiv);
+  peltItems.forEach((pelt) => {
+    let button = document.createElement("button");
+    button.textContent = pelt.name;
+    button.className = "item-button";
+    button.onclick = () =>
+      addItemToSummary(pelt.name, 1, pelt.price, sellSummaryDiv);
+    itemButtonsDiv.appendChild(button);
+  });
+  createButton(itemButtonsDiv, "Role Turn-In", () => {
+    addItemToSummary("Bear Pelt", 6, 800, sellSummaryDiv);
+    addItemToSummary("Wolf Pelt", 12, 400, sellSummaryDiv);
+    addItemToSummary("Boar Pelt", 6, 500, sellSummaryDiv);
+    addItemToSummary("Deer Pelt", 20, 300, sellSummaryDiv);
+    alert("Remember to collect 5 rabbit pelts too!");
+  });
+  addReturnButton(itemButtonsDiv, "sell");
+}
 
+function addReturnButton(container, type) {
+  let returnButton = document.createElement("button");
+  returnButton.textContent = "←";
+  returnButton.className = "return-button";
+  returnButton.onclick = () => {
+    if (type === "buy") {
+      if (buyNavigationStack.length > 1) {
+        buyNavigationStack.pop(); // Remove the current level from the stack
+        const previousCategory = buyNavigationStack[buyNavigationStack.length - 1];
+        populateBuyButtons(previousCategory, container, buyNavigationStack.length === 1);
+      } else {
+        populateBuyButtons(buyitems, container, true); // Return to top level if stack is empty
+      }
+    } else if (type === "sell") {
+      if (sellNavigationStack.length > 1) {
+        sellNavigationStack.pop(); // Remove the current level from the stack
+        const previousCategory = sellNavigationStack[sellNavigationStack.length - 1];
+        populateSellButtons(); // Return to sell items list
+      } else {
+        populateSellButtons(); // Return to top level if stack is empty
+      }
+    }
+  };
+  container.appendChild(returnButton);
+}
   function populateRoles() {
     Object.keys(roles).forEach((role) => {
       let button = document.createElement("button");
