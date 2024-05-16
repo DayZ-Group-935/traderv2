@@ -976,33 +976,34 @@ document.addEventListener("DOMContentLoaded", function () {
     addReturnButton(itemButtonsDiv, false);
   }
 
+
   function handleSellItemClick(itemName) {
   const itemButtonsDiv = document.getElementById("itemButtons");
   clearItemButtons(itemButtonsDiv);
   switch (itemName) {
     case "Cannabis":
-      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 10, bulkOptions: [1, 10, 50, 1200] });
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 10, bulkOptions: [1, 10, 50, 1200] }, sellSummaryDiv);
       break;
     case "Cigarettes":
-      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 50, bulkOptions: [1, 10, 50, 250] });
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 50, bulkOptions: [1, 10, 50, 250] }, sellSummaryDiv);
       break;
     case "Box of Nails":
-      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 500, bulkOptions: [1, 5, 10, 20] });
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 500, bulkOptions: [1, 5, 10, 20] }, sellSummaryDiv);
       break;
     case "Sharpening Stones":
-      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 20] });
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 20] }, sellSummaryDiv);
       break;
     case "Tanned Leather":
-      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 200, bulkOptions: [1, 8] });
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 200, bulkOptions: [1, 8] }, sellSummaryDiv);
       break;
     case "Books":
-      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 100, bulkOptions: [1, 5, 20] });
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 100, bulkOptions: [1, 5, 20] }, sellSummaryDiv);
       break;
     case "Hockey Stick":
-      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 50] });
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 50] }, sellSummaryDiv);
       break;
     case "Meat Tenderizers":
-      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 150, bulkOptions: [1, 5, 10, 200] });
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 150, bulkOptions: [1, 5, 10, 200] }, sellSummaryDiv);
       break;
     case "Golden Deagle":
     case "Set of 4 Teddy Bears":
@@ -1022,15 +1023,50 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 }
 
-  function populateBulkOptions(container, item) {
-    item.bulkOptions.forEach((quantity) => {
-      let buttonText = `${item.name} x ${quantity}`;
-      createButton(container, buttonText, () =>
-        addItemToSummary(item.name, quantity, item.price, buySummaryDiv)
-      );
-    });
-    addReturnButton(container, false);
+function populateBulkOptions(container, item, summaryDiv) {
+  item.bulkOptions.forEach((quantity) => {
+    let buttonText = `${item.name} x ${quantity}`;
+    createButton(container, buttonText, () =>
+      addItemToSummary(item.name, quantity, item.price, summaryDiv)
+    );
+  });
+  addReturnButton(container, false);
+}
+
+function addItemToSummary(itemName, quantity, basePrice, summaryDiv) {
+  let existingItemDiv = Array.from(summaryDiv.children).find(
+    (div) => div.dataset.itemName === itemName
+  );
+  if (existingItemDiv) {
+    let existingQuantity = parseInt(existingItemDiv.dataset.quantity);
+    let newQuantity = existingQuantity + quantity;
+    existingItemDiv.dataset.quantity = newQuantity;
+    updateSummaryItem(existingItemDiv, newQuantity, basePrice);
+  } else {
+    let div = document.createElement("div");
+    div.dataset.itemName = itemName;
+    div.dataset.quantity = quantity;
+    div.dataset.basePrice = basePrice;
+    updateSummaryItem(div, quantity, basePrice);
+    summaryDiv.appendChild(div);
   }
+  if (itemName === "Bible") adjustBiblePricing(summaryDiv);
+  updateSummaries();
+}
+
+function updateSummaryItem(div, quantity, basePrice) {
+  let itemName = div.dataset.itemName;
+  let discountedPrice = calculateDiscountedPrice(itemName, basePrice);
+  let totalPrice = discountedPrice * quantity;
+  div.innerHTML = `${itemName} x ${quantity} = ${totalPrice.toFixed(
+    0
+  )} Cr <button class="removeBtn">x</button>`;
+  div.querySelector(".removeBtn").addEventListener("click", () => {
+    let summaryDiv = div.parentElement;
+    summaryDiv.removeChild(div);
+    updateSummaries();
+  });
+}
 
   function addReturnButton(container, isTopCategory = false) {
     if (!isTopCategory) {
@@ -1061,27 +1097,6 @@ document.addEventListener("DOMContentLoaded", function () {
     container.appendChild(button);
   }
 
-  function addItemToSummary(itemName, quantity, basePrice, summaryDiv) {
-    let existingItemDiv = Array.from(summaryDiv.children).find(
-      (div) => div.dataset.itemName === itemName
-    );
-    if (existingItemDiv) {
-      let existingQuantity = parseInt(existingItemDiv.dataset.quantity);
-      let newQuantity = existingQuantity + quantity;
-      existingItemDiv.dataset.quantity = newQuantity;
-      updateSummaryItem(existingItemDiv, newQuantity, basePrice);
-    } else {
-      let div = document.createElement("div");
-      div.dataset.itemName = itemName;
-      div.dataset.quantity = quantity;
-      div.dataset.basePrice = basePrice;
-      updateSummaryItem(div, quantity, basePrice);
-      summaryDiv.appendChild(div);
-    }
-    if (itemName === "Bible") adjustBiblePricing(summaryDiv);
-    updateSummaries();
-  }
-
   function adjustBiblePricing(summaryDiv) {
     let bibleDiv = Array.from(summaryDiv.children).find(
       (div) => div.dataset.itemName === "Bible"
@@ -1103,19 +1118,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function updateSummaryItem(div, quantity, basePrice) {
-    let itemName = div.dataset.itemName;
-    let discountedPrice = calculateDiscountedPrice(itemName, basePrice);
-    let totalPrice = discountedPrice * quantity;
-    div.innerHTML = `${itemName} x ${quantity} = ${totalPrice.toFixed(
-      0
-    )} Cr <button class="removeBtn">x</button>`;
-    div.querySelector(".removeBtn").addEventListener("click", () => {
-      let summaryDiv = div.parentElement;
-      summaryDiv.removeChild(div);
-      updateSummaries();
-    });
-  }
 
   function populateRoles() {
     Object.keys(roles).forEach((role) => {
