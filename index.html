@@ -6,203 +6,201 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <style>
-  /* General Layout and Body Styling */
+/* General Layout and Body Styling */
 body {
-  font-family: Arial, sans-serif; /* Sets the font family */
-  background-color: #191521; /* Sets the background color */
-  margin: 0; /* Removes default margin */
-  padding: 0; /* Removes default padding */
-  display: center; /* Uses center for layout */
-  justify-content: center; /* Centers content horizontally */
-  align-items: center; /* Centers content vertically */
-  height: 100vh; /* Full viewport height */
+  font-family: Arial, sans-serif;
+  background-color: #191521;
+  margin: 0;
+  padding: 0;
+  display: center;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 /* Main container styles */
 .calculator,
 .container,
 .roles-container {
-  display: flex; /* Uses flexbox for layout */
-  flex-direction: column; /* Stacks children in a column */
-  max-width: 425px; /* Sets maximum width */
-  width: 100%; /* Full width up to max-width */
-  margin: 20px auto; /* Centered with margin */
-  padding: 20px; /* Padding inside the container */
-  background-color: #070212; /* Container background color */
-  color: #d96057; /* Text color */
-  border: 4px solid #2b2727; /* Border style */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  position: left; /* Allows positioning of children */
-  margin-bottom: -24px; /* Space below */
+  display: flex;
+  flex-direction: column;
+  max-width: 425px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #070212;
+  color: #d96057;
+  border: 4px solid #2b2727;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: left;
+  margin-bottom: -24px;
 }
 
 /* Specific styling for roles-container to align buttons and roles */
 .roles-container {
-  display: flex; /* Uses flexbox for layout */
-  flex-direction: row; /* Stacks children in a row */
-  align-items: flex-start; /* Aligns items at the start */
-  padding: 20px; /* Padding inside the container */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px;
 }
 
 .button-column {
-  display: flex; /* Uses flexbox for layout */
-  flex-direction: column; /* Stacks children in a column */
-  gap: 10px; /* Space between buttons */
-  width: 140px; /* Fixed width */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 140px;
 }
 
 .roles-column {
-  display: flex; /* Uses flexbox for layout */
-  flex-grow: 1; /* Allows column to grow */
-  justify-content: space-between; /* Space between children */
-  margin-left: 20px; /* Left margin */
-  font-family: Tahoma, sans-serif; /* Font family */
-  font-size: 12px; /* Font size */
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  margin-left: 20px;
+  font-family: Tahoma, sans-serif;
+  font-size: 12px;
 }
 
 .roles-column > div {
-  width: 50%; /* Each child takes up half width */
+  width: 50%;
 }
 
 /* Button styling for roles and actions */
 .role-btn,
 .action-btn {
-  padding: 10px 20px; /* Padding inside the button */
-  color: black; /* Text color */
-  border: none; /* No border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Hand cursor on hover */
-  transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background and scale */
-  margin-top: 5px; /* Space above each button */
-
-  margin-bottom: 5px; /* Space below each button */
-  border: 2px solid darkgrey; /* Border style */
+  padding: 10px 20px;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 2px solid darkgrey;
 }
 
 .role-btn {
-  background-color: grey; /* Button background color */
-  color: darkgrey; /* Text color */
-  padding: 1px 1px; /* Padding inside the content */
-  font-size: 11px; /* Font size */
-  width: 125px; /* Fixed width */
-  height: 30px; /* Fixed height */
-  margin: 2px; /* Margin around button */
-  display: inline-block; /* Ensures the button does not stretch */
-  text-align: center; /* Center text inside the button */
+  background-color: grey;
+  color: darkgrey;
+  padding: 1px 1px;
+  font-size: 11px;
+  width: 125px;
+  height: 30px;
+  margin: 2px;
+  display: inline-block;
+  text-align: center;
 }
 
 .role-btn:hover {
-  background-color: red; /* Red on hover */
-  color: white; /* Text color */
-
-  transform: scale(1.2); /* Slightly enlarge on hover */
+  background-color: red;
+  color: white;
+  transform: scale(1.2);
 }
 
 .role-btn.active {
-  background-color: orange; /* Change to orange when active */
-  color: white; /* Text color */
+  background-color: orange;
+  color: white;
 }
 
 .action-btn {
-  width: 100%; /* Full width */
-  background-color: grey; /* Background color */
-  transform: scale(1.2); /* Slightly enlarge on hover */
+  width: 100%;
+  background-color: grey;
+  transform: scale(1.2);
 }
 
 #calculateBtn {
-  background-color: green; /* Button background color */
-  color: black; /* Text color */
-  font-weight: bold; /* Bold text */
+  background-color: green;
+  color: black;
+  font-weight: bold;
 }
 
 #clearAllBtn {
-  background-color: red; /* Button background color */
-  color: black; /* Text color */
-  font-weight: bold; /* Bold text */
+  background-color: red;
+  color: black;
+  font-weight: bold;
 }
 
 #clearRolesBtn {
-  background-color: lightblue; /* Button background color */
-  font-weight: bold; /* Bold text */
+  background-color: lightblue;
+  font-weight: bold;
 }
 
 .addBtn {
-  background-color: #4caf50; /* Button background color */
-  color: black; /* Text color */
-  border: none; /* No border */
-  padding: 0px 20px; /* Padding inside the button */
-  text-align: center; /* Center text */
-  display: inline-block; /* Ensures the button does not stretch */
-  font-size: 30px; /* Font size */
-  margin: 4px 2px; /* Margin around button */
-  transition-duration: 1s; /* Smooth transition */
-  cursor: pointer; /* Hand cursor on hover */
-  border-radius: 50px; /* Rounded corners */
+  background-color: #4caf50;
+  color: black;
+  border: none;
+  padding: 0px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 30px;
+  margin: 4px 2px;
+  transition-duration: 1s;
+  cursor: pointer;
+  border-radius: 50px;
 }
 
 .addBtn:hover {
-  background-color: lightgreen; /* Lighter green background on hover */
-  transform: scale(1.2); /* Slightly enlarge on hover */
+  background-color: lightgreen;
+  transform: scale(1.2);
 }
 
 .action-btn:hover {
-  opacity: 0.4; /* Reduced opacity on hover */
-  transform: scale(1.1); /* Slightly enlarge on hover */
+  opacity: 0.4;
+  transform: scale(1.1);
 }
 
 /* Styles for headings and tabs */
 h1,
 h2 {
-  text-align: center; /* Center-align text */
-  font-size: 22px; /* Font size */
-  margin-bottom: 10px; /* Space below heading */
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 .tab {
-  overflow: hidden; /* Hide overflow */
-  border: 4px solid #2b2727; /* Border style */
-  background-color: #171721; /* Background color */
-  border-radius: 20px; /* Rounded corners */
+  overflow: hidden;
+  border: 4px solid #2b2727;
+  background-color: #171721;
+  border-radius: 20px;
 }
 
 .tab button {
-  background-color: #171721; /* Button background color */
-  width: 180px; /* Fixed width */
-  color: darkgrey; /* Text color */
-  font-weight: bold; /* Bold text */
-  float: left; /* Float left */
-  border: none; /* No border */
-  outline: none; /* No outline */
-  cursor: pointer; /* Hand cursor on hover */
-  padding: 10px 10px; /* Padding inside the button */
-  transition: 0.2s; /* Smooth transition */
-  font-family: Calibri, sans-serif; /* Font family */
-  border-radius: 5px; /* Rounded corners */
-  margin: 5px; /* Margin around button */
-  margin-left: 15px; /* Space left */
+  background-color: #171721;
+  width: 180px;
+  color: darkgrey;
+  font-weight: bold;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  transition: 0.2s;
+  font-family: Calibri, sans-serif;
+  border-radius: 5px;
+  margin: 5px;
+  margin-left: 15px;
 }
 
 .tab button:hover {
-  background-color: red; /* Red on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  background-color: red;
+  transform: scale(1.05);
 }
 
 .tab button.active {
-  background-color: darkgrey; /* Active background color */
-  font-size: 18px; /* Font size */
-  padding: 7px 5px; /* Padding inside the button */
-  color: black; /* Text color */
+  background-color: darkgrey;
+  font-size: 18px;
+  padding: 7px 5px;
+  color: black;
 }
 
 .tabcontent,
 .roles-content {
-  display: none; /* Hide content by default */
-  padding: 6px 16px; /* Padding inside the content */
-  border: 4px solid #2b2727; /* Border style */
-  border-radius: 20px; /* Rounded corners */
-  margin-bottom: 10px; /* Space below */
-  margin-top: -3px; /* Space above */
+  display: none;
+  padding: 6px 16px;
+  border: 4px solid #2b2727;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  margin-top: -3px;
   min-height: 300px;
   min-height: flex;
 }
@@ -210,145 +208,160 @@ h2 {
 .item-price,
 .inline,
 .roles-content {
-  display: flex; /* Uses flexbox for layout */
-  align-items: center; /* Aligns items vertically */
-  justify-content: space-between; /* Space between children */
-  margin-bottom: 15px; /* Space below */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
 .item-price select,
 .calculator input[type="number"] {
-  padding: 8px; /* Padding inside the element */
-  border: 3px solid #2b2727; /* Border style */
-  border-radius: 22px; /* Rounded corners */
-  background-color: #694542; /* Background color */
-  color: black; /* Text color */
+  padding: 8px;
+  border: 3px solid #2b2727;
+  border-radius: 22px;
+  background-color: #694542;
+  color: black;
 }
 
 .item-price span {
-  width: 45%; /* Fixed width */
-  text-align: right; /* Align text to the right */
-  overflow: hidden; /* Hide overflow */
-  white-space: nowrap; /* No wrapping */
-  text-overflow: ellipsis; /* Ellipsis for overflow text */
+  width: 45%;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .summary,
 .roles-content {
-  margin-top: 10px; /* Space above */
-  margin-bottom: 10px; /* Space below */
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .roles-container .role-label {
-  font-size: 50%; /* Font size */
-  display: inline-block; /* Inline block display */
-  background-color: grey; /* Background color */
-  color: white; /* Text color */
-  padding: 5px 10px; /* Padding inside the label */
-  border-radius: 20px; /* Rounded corners */
-  margin: 0 5px; /* Margin around the label */
-  cursor: pointer; /* Hand cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition */
-  border: 1px solid lightgrey; /* Border style */
+  font-size: 50%;
+  display: inline-block;
+  background-color: grey;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: 1px solid lightgrey;
 }
 
 .roles-container .role-label.active {
-  background-color: #add8e6; /* Active background color */
-  color: white; /* Text color */
+  background-color: #add8e6;
+  color: white;
 }
 
 .summary {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Aligns summary items to the left */
-  margin-top: 10px; /* Space above */
-  margin-bottom: 10px; /* Space below */
+  align-items: flex-start;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .summary div {
-  font-size: 14px; /* Font size */
-  font-family: Arial Unicode MS, sans-serif; /* Font family */
-  color: lightgrey; /* Text color */
-  margin: 2px; /* Margin around the div */
-  margin-left: 12px; /* Margin around the div */
-  text-align: left; /* Ensure text is aligned to the left */
-  width: 100%; /* Ensure each summary item takes full width */
+  font-size: 14px;
+  font-family: Arial Unicode MS, sans-serif;
+  color: lightgrey;
+  margin: 2px;
+  margin-left: 12px;
+  text-align: left;
+  width: 100%;
 }
 
-/* Style for the 'x' remove button in the summary */
-.summary .removeBtn {
-  background-color: #ff4c4c; /* Red background */
-  color: black; /* White text */
-  border: none; /* No border */
-  border-radius: 50%; /* Circular shape */
-  padding: 3px 6px; /* Padding around the text */
-  font-weight: bold; /* Bold text */
-  cursor: pointer; /* Hand cursor on hover */
-  transition: background-color 0.2s, transform 0.2s; /* Smooth transition for hover effects */
+/* Style for the 'x' remove buttons in the summary */
+.summary .removeOneBtn {
+  background-color: orange;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
-.summary .removeBtn:hover {
-  background-color: #ff0000; /* Darker shade of red on hover */
-  transform: scale(1.2); /* Slightly enlarge on hover */
+.summary .removeOneBtn:hover {
+  background-color: darkorange;
+  transform: scale(1.2);
+}
+
+.summary .removeAllBtn {
+  background-color: red;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  padding: 3px 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.summary .removeAllBtn:hover {
+  background-color: darkred;
+  transform: scale(1.2);
 }
 
 /* Style for quantity labels */
 .tabcontent label {
-  margin-right: 5px; /* Space between label and input */
+  margin-right: 5px;
 }
 
 #buyItemButtons, #itemButtons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start; /* Aligns buttons to the left */
+  justify-content: flex-start;
 }
 
 .item-button {
-  display: inline-block; /* Ensure buttons are inline */
-  width: 150px; /* Fixed width */
-  padding: 10px; /* Reduced padding inside the button */
-  padding-left: 2px; /* Reduced padding inside the button */
-
-  margin: 5px; /* Margin around button */
-  background-color: #444; /* Background color */
-  color: white; /* Text color */
-  border: 2px solid darkgrey; /* Border style */
-  text-align: center; /* Center text inside the button */
-  cursor: pointer; /* Hand cursor on hover */
-  border-radius: 5px; /* Rounded corners */
-  transition: background-color 0.2s, transform 0.2s; /* Smooth transition */
-  white-space: nowrap; /* Prevent text from wrapping */
+  display: inline-block;
+  width: 150px;
+  padding: 10px;
+  padding-left: 2px;
+  margin: 5px;
+  background-color: #444;
+  color: white;
+  border: 2px solid darkgrey;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s, transform 0.2s;
+  white-space: nowrap;
 }
 
 .item-button:hover {
-  background-color: #555; /* Darker background on hover */
-  transform: scale(1.08); /* Slightly enlarge on hover */
+  background-color: #555;
+  transform: scale(1.08);
 }
 
 .return-button {
-  background-color: red; /* Button background color */
-  color: black; /* Text color */
-  border: none; /* No border */
-  padding: 10px; /* Padding inside the button */
-  cursor: pointer; /* Hand cursor on hover */
-  font-weight: bold; /* Bold text */
-  border-radius: 50px; /* Rounded corners */
-  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
-  position: absolute; /* Absolute positioning */
-  top: 10px; /* Position from top */
-  right: 10px; /* Position from right */
+  background-color: red;
+  color: black;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: background-color 0.3s, transform 0.3s;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 .return-button:hover {
-  background-color: darkred; /* Darker background on hover */
-  transform: scale(1.1); /* Slightly enlarge on hover */
+  background-color: darkred;
+  transform: scale(1.1);
 }
 
 .logo {
-  width: 100%; /* Shrinks the logo to 20% of its original size */
-  height: auto; /* Maintains the aspect ratio */
-  display: block; /* Ensures the image behaves like a block element */
-  margin: 0 auto; /* Centers the image horizontally */
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 </style>
@@ -861,7 +874,7 @@ const roles = {
   }
 };
 // END OF ITEMS AND ROLES
-        document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
   const buyItemButtonsDiv = document.getElementById("buyItemButtons");
   const sellItemButtonsDiv = document.getElementById("itemButtons");
   const sellSummaryDiv = document.getElementById("sellSummary");
@@ -978,6 +991,32 @@ const roles = {
     addReturnButton(container, "sell");
   }
 
+  function addReturnButton(container, type) {
+    let returnButton = document.createElement("button");
+    returnButton.textContent = "←";
+    returnButton.className = "return-button";
+    returnButton.onclick = () => {
+      if (type === "buy") {
+        if (buyNavigationStack.length > 1) {
+          buyNavigationStack.pop(); // Remove the current level from the stack
+          const previousCategory = buyNavigationStack[buyNavigationStack.length - 1];
+          populateBuyButtons(previousCategory, container, buyNavigationStack.length === 1);
+        } else {
+          populateBuyButtons(buyitems, container, true); // Return to top level if stack is empty
+        }
+      } else if (type === "sell") {
+        if (sellNavigationStack.length > 1) {
+          sellNavigationStack.pop(); // Remove the current level from the stack
+          const previousCategory = sellNavigationStack[sellNavigationStack.length - 1];
+          populateSellButtons(); // Return to sell items list
+        } else {
+          populateSellButtons(); // Return to top level if stack is empty
+        }
+      }
+    };
+    container.appendChild(returnButton);
+  }
+
   function clearItemButtons(itemButtonsDiv) {
     itemButtonsDiv.innerHTML = "";
   }
@@ -1028,7 +1067,7 @@ const roles = {
         totalPrice = 60000; // 40000 + 20000
       }
       bibleDiv.dataset.basePrice = totalPrice / quantity; // Update base price for Bible
-      updateSummaryItem(bibleDiv, quantity, totalPrice / quantity);
+      updateSummaryItem(bibleDiv , quantity, totalPrice / quantity);
     }
   }
 
@@ -1038,12 +1077,28 @@ const roles = {
     let totalPrice = discountedPrice * quantity;
     div.innerHTML = `${itemName} x ${quantity} = ${totalPrice.toFixed(
       0
-    )} Cr <button class="removeBtn">x</button>`;
-    div.querySelector(".removeBtn").addEventListener("click ", () => {
+    )} Cr <button class="removeOneBtn" style="background-color: orange;">x</button><button class="removeAllBtn" style="background-color: red;">x</button>`;
+    div.querySelector(".removeOneBtn").addEventListener("click", () => {
+      removeOneItem(div);
+    });
+    div.querySelector(".removeAllBtn").addEventListener("click", () => {
       let summaryDiv = div.parentElement;
       summaryDiv.removeChild(div);
       updateSummaries();
     });
+  }
+
+  function removeOneItem(div) {
+    let quantity = parseInt(div.dataset.quantity);
+    if (quantity > 1) {
+      let newQuantity = quantity - 1;
+      div.dataset.quantity = newQuantity;
+      updateSummaryItem(div, newQuantity, parseFloat(div.dataset.basePrice));
+    } else {
+      let summaryDiv = div.parentElement;
+      summaryDiv.removeChild(div);
+      updateSummaries();
+    }
   }
 
   function populateSellButtons() {
@@ -1072,51 +1127,26 @@ const roles = {
   }
 
   function populatePeltButtons(itemButtonsDiv, peltItems) {
-  sellNavigationStack.push(sellitems); // Push the current sell items to the navigation stack
-  clearItemButtons(itemButtonsDiv);
-  peltItems.forEach((pelt) => {
-    let button = document.createElement("button");
-    button.textContent = pelt.name;
-    button.className = "item-button";
-    button.onclick = () =>
-      addItemToSummary(pelt.name, 1, pelt.price, sellSummaryDiv);
-    itemButtonsDiv.appendChild(button);
-  });
-  createButton(itemButtonsDiv, "Role Turn-In", () => {
-    addItemToSummary("Bear Pelt", 6, 800, sellSummaryDiv);
-    addItemToSummary("Wolf Pelt", 12, 400, sellSummaryDiv);
-    addItemToSummary("Boar Pelt", 6, 500, sellSummaryDiv);
-    addItemToSummary("Deer Pelt", 20, 300, sellSummaryDiv);
-    alert("Remember to collect 5 rabbit pelts too!");
-  });
-  addReturnButton(itemButtonsDiv, "sell");
-}
+    sellNavigationStack.push(sellitems); // Push the current sell items to the navigation stack
+    clearItemButtons(itemButtonsDiv);
+    peltItems.forEach((pelt) => {
+      let button = document.createElement("button");
+      button.textContent = pelt.name;
+      button.className = "item-button";
+      button.onclick = () =>
+        addItemToSummary(pelt.name, 1, pelt.price, sellSummaryDiv);
+      itemButtonsDiv.appendChild(button);
+    });
+    createButton(itemButtonsDiv, "Role Turn-In", () => {
+      addItemToSummary("Bear Pelt", 6, 800, sellSummaryDiv);
+      addItemToSummary("Wolf Pelt", 12, 400, sellSummaryDiv);
+      addItemToSummary("Boar Pelt", 6, 500, sellSummaryDiv);
+      addItemToSummary("Deer Pelt", 20, 300, sellSummaryDiv);
+      alert("Remember to collect 5 rabbit pelts too!");
+    });
+    addReturnButton(itemButtonsDiv, "sell");
+  }
 
-function addReturnButton(container, type) {
-  let returnButton = document.createElement("button");
-  returnButton.textContent = "←";
-  returnButton.className = "return-button";
-  returnButton.onclick = () => {
-    if (type === "buy") {
-      if (buyNavigationStack.length > 1) {
-        buyNavigationStack.pop(); // Remove the current level from the stack
-        const previousCategory = buyNavigationStack[buyNavigationStack.length - 1];
-        populateBuyButtons(previousCategory, container, buyNavigationStack.length === 1);
-      } else {
-        populateBuyButtons(buyitems, container, true); // Return to top level if stack is empty
-      }
-    } else if (type === "sell") {
-      if (sellNavigationStack.length > 1) {
-        sellNavigationStack.pop(); // Remove the current level from the stack
-        const previousCategory = sellNavigationStack[sellNavigationStack.length - 1];
-        populateSellButtons(); // Return to sell items list
-      } else {
-        populateSellButtons(); // Return to top level if stack is empty
-      }
-    }
-  };
-  container.appendChild(returnButton);
-}
   function populateRoles() {
     Object.keys(roles).forEach((role) => {
       let button = document.createElement("button");
@@ -1243,9 +1273,12 @@ function addReturnButton(container, type) {
         // Update the displayed text for each summary item
         div.innerHTML = `${itemName} x ${quantity} = ${totalPrice.toFixed(
           0
-        )} Cr <button class="removeBtn">x</button>`;
+        )} Cr <button class="removeOneBtn" style="background-color: orange;">x</button><button class="removeAllBtn" style="background-color: red;">x</button>`;
         // Reattach the event listener to the remove button after updating innerHTML
-        div.querySelector(".removeBtn").addEventListener("click", () => {
+        div.querySelector(".removeOneBtn").addEventListener("click", () => {
+          removeOneItem(div);
+        });
+        div.querySelector(".removeAllBtn").addEventListener("click", () => {
           summaryDiv.removeChild(div);
           updateSummaries();
         });
@@ -1257,6 +1290,7 @@ function addReturnButton(container, type) {
     updateSummaries();
   }
 });
+
 
 </script>
 </body>
