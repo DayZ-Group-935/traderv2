@@ -556,7 +556,7 @@ const buyitems = {
     ],
     "NBC Gear": [
       { name: "Gas Masks", price: 1000 },
-      { name: "NBC Filters", price: 400 },
+      { name: "NBC Filters", price: 400, bulkOptions: [1, 2, 5] },
       { name: "NBC Jacket", price: 600 },
       { name: "NBC Pants", price: 600 },
       { name: "NBC Gloves", price: 400 },
@@ -603,10 +603,11 @@ const buyitems = {
     "IED Components": [
       { name: "IED Container", price: 400 },
       { name: "Plastic Explosives", price: 3000 },
-      { name: "Detonator", price: 100 }
+      { name: "Detonator", price: 100 },
+      { name: "IED Complete", price: 6500 }
     ],
     "Other Explosives": [
-      { name: "US/RUS Grenades", price: 500 },
+      { name: "US/RUS Grenades", price: 500, bulkOptions: [1, 5, 10] },
       { name: "POX Vial", price: 800 },
       { name: "Flashbangs", price: 200 },
       { name: "Land Mines", price: 500 },
@@ -626,7 +627,7 @@ const buyitems = {
   "Building": [
     { name: "Box of Nails", price: 500, bulkOptions: [1, 5, 10, 20] },
     { name: "Sharpening Stones", price: 400, bulkOptions: [1, 5, 10, 20] },
-    { name: "4Dial Combo Lock", price: 500 },
+    { name: "4Dial Combo Lock", price: 500, bulkOptions: [1, 5, 10] },
     { name: "Hatchet", price: 500 },
     { name: "Hacksaws", price: 400 },
     { name: "Sledgehammer", price: 300 },
@@ -909,6 +910,11 @@ document.addEventListener("DOMContentLoaded", function () {
     clearItemButtons(buyItemButtonsDiv);
     if (item.bulkOptions) {
       populateBulkOptions(buyItemButtonsDiv, item);
+    } else if (item.name === "IED Complete") {
+      addItemToSummary("IED Container", 1, 400, buySummaryDiv);
+      addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
+      addItemToSummary("Detonator", 1, 100, buySummaryDiv);
+      populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
     } else {
       addItemToSummary(item.name, 1, item.price, buySummaryDiv);
       populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
