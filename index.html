@@ -861,8 +861,9 @@ const roles = {
   }
 };
 // END OF ITEMS AND ROLES
-document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("DOMContentLoaded", function () {
   const buyItemButtonsDiv = document.getElementById("buyItemButtons");
+  const sellItemButtonsDiv = document.getElementById("itemButtons");
   const sellSummaryDiv = document.getElementById("sellSummary");
   const buySummaryDiv = document.getElementById("buySummary");
   const rolesContainer1 = document.getElementById("roleColumn1");
@@ -871,7 +872,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearRolesBtn = document.getElementById("clearRolesBtn");
   const calculateBtn = document.getElementById("calculateBtn");
   const tablinks = document.getElementsByClassName("tablinks");
-  let navigationStack = [buyitems];
+  let buyNavigationStack = [buyitems];
+  let sellNavigationStack = [sellitems];
 
   populateBuyButtons(buyitems, buyItemButtonsDiv, true);
   populateSellButtons();
@@ -886,7 +888,7 @@ document.addEventListener("DOMContentLoaded", function () {
       button.className = "item-button";
       if (Array.isArray(items[category])) {
         button.onclick = () => {
-          navigationStack.push(items); // Push the current items to the navigation stack
+          buyNavigationStack.push(items); // Push the current items to the navigation stack
           container.innerHTML = "";
           items[category].forEach((item) => {
             let itemButton = document.createElement("button");
@@ -895,17 +897,17 @@ document.addEventListener("DOMContentLoaded", function () {
             itemButton.onclick = () => handleBuyItemClick(item);
             container.appendChild(itemButton);
           });
-          addReturnButton(container);
+          addReturnButton(container, "buy");
         };
       } else {
         button.onclick = () => {
-          navigationStack.push(items); // Push the current items to the navigation stack
+          buyNavigationStack.push(items); // Push the current items to the navigation stack
           populateBuyButtons(items[category], container, false);
         };
       }
       container.appendChild(button);
     });
-    if (!isTopCategory) addReturnButton(container);
+    if (!isTopCategory) addReturnButton(container, "buy");
   }
 
   function handleBuyItemClick(item) {
@@ -921,37 +923,36 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleSellItemClick(itemName) {
-    const itemButtonsDiv = document.getElementById("itemButtons");
-    clearItemButtons(itemButtonsDiv);
+    clearItemButtons(sellItemButtonsDiv);
     switch (itemName) {
       case "Cannabis":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 10, bulkOptions: [1, 10, 50, 1200] }, sellSummaryDiv);
+        populateBulkOptions(sellItemButtonsDiv, { name: itemName, price: 10, bulkOptions: [1, 10, 50, 1200] }, sellSummaryDiv);
         break;
       case "Cigarettes":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 50, bulkOptions: [1, 10, 50, 250] }, sellSummaryDiv);
+        populateBulkOptions(sellItemButtonsDiv, { name: itemName, price: 50, bulkOptions: [1, 10, 50, 250] }, sellSummaryDiv);
         break;
       case "Box of Nails":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 500, bulkOptions: [1, 5, 10, 20] }, sellSummaryDiv);
+        populateBulkOptions(sellItemButtonsDiv, { name: itemName, price: 500, bulkOptions: [1, 5, 10, 20] }, sellSummaryDiv);
         break;
       case "Sharpening Stones":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 20] }, sellSummaryDiv);
+        populateBulkOptions(sellItemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 20] }, sellSummaryDiv);
         break;
       case "Tanned Leather":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 200, bulkOptions: [1, 8] }, sellSummaryDiv);
+        populateBulkOptions(sellItemButtonsDiv, { name: itemName, price: 200, bulkOptions: [1, 8] }, sellSummaryDiv);
         break;
       case "Books":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 100, bulkOptions: [1, 5, 20] }, sellSummaryDiv);
+        populateBulkOptions(sellItemButtonsDiv, { name: itemName, price: 100, bulkOptions: [1, 5, 20] }, sellSummaryDiv);
         break;
       case "Hockey Stick":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 50] }, sellSummaryDiv);
+        populateBulkOptions(sellItemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 50] }, sellSummaryDiv);
         break;
       case "Meat Tenderizers":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 150, bulkOptions: [1, 5, 10, 200] }, sellSummaryDiv);
+        populateBulkOptions(sellItemButtonsDiv, { name: itemName, price: 150, bulkOptions: [1, 5, 10, 200] }, sellSummaryDiv);
         break;
       case "Golden Deagle":
       case "Set of 4 Teddy Bears":
       case "Bible":
-        addItemToSummary(itemName, 1, 10000, sellSummaryDiv); // Set initial price for Bible to 10000
+        addItemToSummary(itemName, 1, sellitems.find((item) => item.name === itemName).price, sellSummaryDiv);
         populateSellButtons(); // Repopulate buttons to prevent breaking the calculator
         break;
       default:
@@ -974,20 +975,29 @@ document.addEventListener("DOMContentLoaded", function () {
         addItemToSummary(item.name, quantity, item.price, summaryDiv)
       );
     });
-    addReturnButton(container);
+    addReturnButton(container, "sell");
   }
 
-  function addReturnButton(container) {
+  function addReturnButton(container, type) {
     let returnButton = document.createElement("button");
     returnButton.textContent = "←";
     returnButton.className = "return-button";
     returnButton.onclick = () => {
-      if (navigationStack.length > 1) {
-        navigationStack.pop(); // Remove the current level from the stack
-        const previousCategory = navigationStack[navigationStack.length - 1];
-        populateBuyButtons(previousCategory, container, navigationStack.length === 1);
-      } else {
-        populateBuyButtons(buyitems, container, true); // Return to top level if stack is empty
+      if (type === "buy") {
+        if (buyNavigationStack.length > 1) {
+          buyNavigationStack.pop(); // Remove the current level from the stack
+          const previousCategory = buyNavigationStack[buyNavigationStack.length - 1];
+          populateBuyButtons(previousCategory, container, buyNavigationStack.length === 1);
+        } else {
+          populateBuyButtons(buyitems, container, true); // Return to top level if stack is empty
+        }
+      } else if (type === "sell") {
+        if (sellNavigationStack.length > 1) {
+          sellNavigationStack.pop(); // Remove the current level from the stack
+          populateSellButtons(); // Return to sell items list
+        } else {
+          populateSellButtons(); // Return to top level if stack is empty
+        }
       }
     };
     container.appendChild(returnButton);
@@ -1247,6 +1257,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
- </script>
+</script>
 </body>
 </html>
