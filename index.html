@@ -877,107 +877,24 @@ document.addEventListener("DOMContentLoaded", function () {
   populateRoles();
   attachEventListeners();
 
-  function populateBuyButtons(items, container, isTopCategory = false) {
-    container.innerHTML = "";
-    Object.keys(items).forEach((category) => {
-      let button = document.createElement("button");
-      button.textContent = category;
-      button.className = "item-button";
-      if (Array.isArray(items[category])) {
-        button.onclick = () => {
-          container.innerHTML = "";
-          items[category].forEach((item) => {
-            let itemButton = document.createElement("button");
-            itemButton.textContent = item.name;
-            itemButton.className = "item-button";
-            itemButton.onclick = () => handleBuyItemClick(item);
-            container.appendChild(itemButton);
-          });
-          addReturnButton(container, false);
-        };
-      } else {
-        button.onclick = () => {
-          populateBuyButtons(items[category], container, false);
-        };
-      }
-      container.appendChild(button);
-    });
-    if (!isTopCategory) addReturnButton(container, false);
-  }
 
   function handleBuyItemClick(item) {
-    const buyItemButtonsDiv = document.getElementById("buyItemButtons");
-    clearItemButtons(buyItemButtonsDiv);
-    if (item.bulkOptions) {
-      populateBulkOptions(buyItemButtonsDiv, item);
-    } else if (item.name === "IED Complete") {
-      addItemToSummary("IED Container", 1, 400, buySummaryDiv);
-      addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
-      addItemToSummary("Detonator", 1, 100, buySummaryDiv);
-      populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
-    } else {
-      addItemToSummary(item.name, 1, item.price, buySummaryDiv);
-      populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
-    }
+  const buyItemButtonsDiv = document.getElementById("buyItemButtons");
+  clearItemButtons(buyItemButtonsDiv);
+  if (item.bulkOptions) {
+    populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv);
+  } else if (item.name === "IED Complete") {
+    addItemToSummary("IED Container", 1, 400, buySummaryDiv);
+    addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
+    addItemToSummary("Detonator", 1, 100, buySummaryDiv);
+    populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
+  } else {
+    addItemToSummary(item.name, 1, item.price, buySummaryDiv);
+    populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
   }
+}
 
-  function populateBulkOptions(container, item) {
-    item.bulkOptions.forEach((quantity) => {
-      let buttonText = `${item.name} x ${quantity}`;
-      createButton(container, buttonText, () =>
-        addItemToSummary(item.name, quantity, item.price, buySummaryDiv)
-      );
-    });
-    addReturnButton(container, false);
-  }
-
-  function populateSellButtons() {
-    const itemButtonsDiv = document.getElementById("itemButtons");
-    clearItemButtons(itemButtonsDiv);
-    let peltItems = sellitems.filter((item) => item.name.includes("Pelt"));
-    sellitems.forEach((item) => {
-      if (
-        !item.name.includes("Pelt") &&
-        item.name !== "Books" &&
-        item.name !== "Bible"
-      ) {
-        createButton(itemButtonsDiv, item.name, () =>
-          handleSellItemClick(item.name)
-        );
-      }
-    });
-    createButton(itemButtonsDiv, "Pelts", () =>
-      populatePeltButtons(itemButtonsDiv, peltItems)
-    );
-    createButton(itemButtonsDiv, "Books", () => handleSellItemClick("Books"));
-    createButton(itemButtonsDiv, "Bible", () =>
-      addItemToSummary("Bible", 1, 10000, sellSummaryDiv)
-    ); // Set initial price to 10000
-    addReturnButton(itemButtonsDiv, true); // Add return button to all levels except the top
-  }
-
-  function populatePeltButtons(itemButtonsDiv, peltItems) {
-    clearItemButtons(itemButtonsDiv);
-    peltItems.forEach((pelt) => {
-      let button = document.createElement("button");
-      button.textContent = pelt.name;
-      button.className = "item-button";
-      button.onclick = () =>
-        addItemToSummary(pelt.name, 1, pelt.price, sellSummaryDiv);
-      itemButtonsDiv.appendChild(button);
-    });
-    createButton(itemButtonsDiv, "Role Turn-In", () => {
-      addItemToSummary("Bear Pelt", 6, 800, sellSummaryDiv);
-      addItemToSummary("Wolf Pelt", 12, 400, sellSummaryDiv);
-      addItemToSummary("Boar Pelt", 6, 500, sellSummaryDiv);
-      addItemToSummary("Deer Pelt", 20, 300, sellSummaryDiv);
-      alert("Remember to collect 5 rabbit pelts too!");
-    });
-    addReturnButton(itemButtonsDiv, false);
-  }
-
-
-  function handleSellItemClick(itemName) {
+function handleSellItemClick(itemName) {
   const itemButtonsDiv = document.getElementById("itemButtons");
   clearItemButtons(itemButtonsDiv);
   switch (itemName) {
@@ -1033,6 +950,23 @@ function populateBulkOptions(container, item, summaryDiv) {
   addReturnButton(container, false);
 }
 
+function addReturnButton(container, isTopCategory = false) {
+  if (!isTopCategory) {
+    let returnButton = document.createElement("button");
+    returnButton.textContent = "←";
+    returnButton.className = "return-button";
+    returnButton.onclick = () => {
+      clearItemButtons(container);
+      if (container.id === "buyItemButtons") {
+        populateBuyButtons(buyitems, container, true);
+      } else {
+        populateSellButtons();
+      }
+    };
+    container.appendChild(returnButton);
+  }
+}
+
 function addItemToSummary(itemName, quantity, basePrice, summaryDiv) {
   let existingItemDiv = Array.from(summaryDiv.children).find(
     (div) => div.dataset.itemName === itemName
@@ -1068,21 +1002,96 @@ function updateSummaryItem(div, quantity, basePrice) {
   });
 }
 
-  function addReturnButton(container, isTopCategory = false) {
-    if (!isTopCategory) {
-      let returnButton = document.createElement("button");
-      returnButton.textContent = "←";
-      returnButton.className = "return-button";
-      returnButton.onclick = () => {
-        clearItemButtons(container);
-        if (container === buyItemButtonsDiv) {
-          populateBuyButtons(buyitems, container, true);
-        } else {
-          populateSellButtons();
-        }
-      };
-      container.appendChild(returnButton);
+function adjustBiblePricing(summaryDiv) {
+  let bibleDiv = Array.from(summaryDiv.children).find(
+    (div) => div.dataset.itemName === "Bible"
+  );
+  if (bibleDiv) {
+    let quantity = parseInt(bibleDiv.dataset.quantity);
+    let totalPrice;
+    if (quantity === 1) {
+      totalPrice = 10000;
+    } else if (quantity === 2) {
+      totalPrice = 30000; // 20000 + 10000
+    } else if (quantity === 3) {
+      totalPrice = 40000; // 30000 + 10000
+    } else if (quantity >= 4) {
+      totalPrice = 60000; // 40000 + 20000
     }
+    bibleDiv.dataset.basePrice = totalPrice / quantity; // Update base price for Bible
+    updateSummaryItem(bibleDiv, quantity, totalPrice / quantity);
+  }
+}
+
+function updateSummaries() {
+  // Recalculate and update the summaries for both buy and sell tabs
+  ["buy", "sell"].forEach((type) => {
+    const summaryDiv = document.getElementById(type + "Summary");
+    const summaryItems = summaryDiv.querySelectorAll("div");
+    summaryItems.forEach((div) => {
+      const itemName = div.dataset.itemName;
+      const quantity = parseInt(div.dataset.quantity);
+      const basePrice = parseFloat(div.dataset.basePrice);
+      const discountedPrice = calculateDiscountedPrice(itemName, basePrice);
+      const totalPrice = discountedPrice * quantity;
+      // Update the displayed text for each summary item
+      div.innerHTML = `${itemName} x ${quantity} = ${totalPrice.toFixed(
+        0
+      )} Cr <button class="removeBtn">x</button>`;
+      // Reattach the event listener to the remove button after updating innerHTML
+      div.querySelector(".removeBtn").addEventListener("click", () => {
+        summaryDiv.removeChild(div);
+        updateSummaries();
+      });
+    });
+  });
+}
+
+
+
+  function populateSellButtons() {
+    const itemButtonsDiv = document.getElementById("itemButtons");
+    clearItemButtons(itemButtonsDiv);
+    let peltItems = sellitems.filter((item) => item.name.includes("Pelt"));
+    sellitems.forEach((item) => {
+      if (
+        !item.name.includes("Pelt") &&
+        item.name !== "Books" &&
+        item.name !== "Bible"
+      ) {
+        createButton(itemButtonsDiv, item.name, () =>
+          handleSellItemClick(item.name)
+        );
+      }
+    });
+    createButton(itemButtonsDiv, "Pelts", () =>
+      populatePeltButtons(itemButtonsDiv, peltItems)
+    );
+    createButton(itemButtonsDiv, "Books", () => handleSellItemClick("Books"));
+    createButton(itemButtonsDiv, "Bible", () =>
+      addItemToSummary("Bible", 1, 10000, sellSummaryDiv)
+    ); // Set initial price to 10000
+    addReturnButton(itemButtonsDiv, true); // Add return button to all levels except the top
+  }
+
+  function populatePeltButtons(itemButtonsDiv, peltItems) {
+    clearItemButtons(itemButtonsDiv);
+    peltItems.forEach((pelt) => {
+      let button = document.createElement("button");
+      button.textContent = pelt.name;
+      button.className = "item-button";
+      button.onclick = () =>
+        addItemToSummary(pelt.name, 1, pelt.price, sellSummaryDiv);
+      itemButtonsDiv.appendChild(button);
+    });
+    createButton(itemButtonsDiv, "Role Turn-In", () => {
+      addItemToSummary("Bear Pelt", 6, 800, sellSummaryDiv);
+      addItemToSummary("Wolf Pelt", 12, 400, sellSummaryDiv);
+      addItemToSummary("Boar Pelt", 6, 500, sellSummaryDiv);
+      addItemToSummary("Deer Pelt", 20, 300, sellSummaryDiv);
+      alert("Remember to collect 5 rabbit pelts too!");
+    });
+    addReturnButton(itemButtonsDiv, false);
   }
 
   function clearItemButtons(itemButtonsDiv) {
@@ -1096,28 +1105,6 @@ function updateSummaryItem(div, quantity, basePrice) {
     button.onclick = onClick;
     container.appendChild(button);
   }
-
-  function adjustBiblePricing(summaryDiv) {
-    let bibleDiv = Array.from(summaryDiv.children).find(
-      (div) => div.dataset.itemName === "Bible"
-    );
-    if (bibleDiv) {
-      let quantity = parseInt(bibleDiv.dataset.quantity);
-      let totalPrice;
-      if (quantity === 1) {
-        totalPrice = 10000;
-      } else if (quantity === 2) {
-        totalPrice = 30000; // 20000 + 10000
-      } else if (quantity === 3) {
-        totalPrice = 40000; // 30000 + 10000
-      } else if (quantity >= 4) {
-        totalPrice = 60000; // 40000 + 20000
-      }
-      bibleDiv.dataset.basePrice = totalPrice / quantity; // Update base price for Bible
-      updateSummaryItem(bibleDiv, quantity, totalPrice / quantity);
-    }
-  }
-
 
   function populateRoles() {
     Object.keys(roles).forEach((role) => {
@@ -1229,30 +1216,6 @@ function updateSummaryItem(div, quantity, basePrice) {
     Array.from(tablinks).forEach((link) => link.classList.remove("active"));
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.classList.add("active");
-  }
-
-  function updateSummaries() {
-    // Recalculate and update the summaries for both buy and sell tabs
-    ["buy", "sell"].forEach((type) => {
-      const summaryDiv = document.getElementById(type + "Summary");
-      const summaryItems = summaryDiv.querySelectorAll("div");
-      summaryItems.forEach((div) => {
-        const itemName = div.dataset.itemName;
-        const quantity = parseInt(div.dataset.quantity);
-        const basePrice = parseFloat(div.dataset.basePrice);
-        const discountedPrice = calculateDiscountedPrice(itemName, basePrice);
-        const totalPrice = discountedPrice * quantity;
-        // Update the displayed text for each summary item
-        div.innerHTML = `${itemName} x ${quantity} = ${totalPrice.toFixed(
-          0
-        )} Cr <button class="removeBtn">x</button>`;
-        // Reattach the event listener to the remove button after updating innerHTML
-        div.querySelector(".removeBtn").addEventListener("click", () => {
-          summaryDiv.removeChild(div);
-          updateSummaries();
-        });
-      });
-    });
   }
 
   function updateRoleEffects() {
