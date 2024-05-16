@@ -862,7 +862,8 @@ const roles = {
   }
 };
 // END OF ITEMS AND ROLES
-document.addEventListener("DOMContentLoaded", function () {
+
+  document.addEventListener("DOMContentLoaded", function () {
   const buyItemButtonsDiv = document.getElementById("buyItemButtons");
   const sellSummaryDiv = document.getElementById("sellSummary");
   const buySummaryDiv = document.getElementById("buySummary");
@@ -872,28 +873,54 @@ document.addEventListener("DOMContentLoaded", function () {
   const clearRolesBtn = document.getElementById("clearRolesBtn");
   const calculateBtn = document.getElementById("calculateBtn");
   const tablinks = document.getElementsByClassName("tablinks");
+  let currentCategory = buyitems;
+
   populateBuyButtons(buyitems, buyItemButtonsDiv, true);
   populateSellButtons();
   populateRoles();
   attachEventListeners();
 
+  function populateBuyButtons(items, container, isTopCategory = false) {
+    container.innerHTML = "";
+    Object.keys(items).forEach((category) => {
+      let button = document.createElement("button");
+      button.textContent = category;
+      button.className = "item-button";
+      if (Array.isArray(items[category])) {
+        button.onclick = () => {
+          container.innerHTML = "";
+          items[category].forEach((item) => {
+            let itemButton = document.createElement("button");
+            itemButton.textContent = item.name;
+            itemButton.className = "item-button";
+            itemButton.onclick = () => handleBuyItemClick(item);
+            container.appendChild(itemButton);
+          });
+          addReturnButton(container, items);
+        };
+      } else {
+        button.onclick = () => {
+          currentCategory = items[category];
+          populateBuyButtons(items[category], container, false);
+        };
+      }
+      container.appendChild(button);
+    });
+    if (!isTopCategory) addReturnButton(container, items);
+  }
 
   function handleBuyItemClick(item) {
-  const buyItemButtonsDiv = document.getElementById("buyItemButtons");
-  clearItemButtons(buyItemButtonsDiv);
-  if (item.bulkOptions) {
-    populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv);
-  } else if (item.name === "IED Complete") {
-    addItemToSummary("IED Container", 1, 400, buySummaryDiv);
-    addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
-    addItemToSummary("Detonator", 1, 100, buySummaryDiv);
-    populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
-  } else {
-    addItemToSummary(item.name, 1, item.price, buySummaryDiv);
-    // Remove this line to prevent going back to the top category
-    // populateBuyButtons(buyitems, buyItemButtonsDiv, true); 
+    if (item.bulkOptions) {
+      populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv);
+    } else if (item.name === "IED Complete") {
+      addItemToSummary("IED Container", 1, 400, buySummaryDiv);
+      addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
+      addItemToSummary("Detonator", 1, 100, buySummaryDiv);
+    } else {
+      addItemToSummary(item.name, 1, item.price, buySummaryDiv);
+    }
   }
-}
+
   function handleSellItemClick(itemName) {
     const itemButtonsDiv = document.getElementById("itemButtons");
     clearItemButtons(itemButtonsDiv);
@@ -941,61 +968,25 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function populateBulkOptions(container, item, summaryDiv) {
+    container.innerHTML = ""; // Clear container
     item.bulkOptions.forEach((quantity) => {
       let buttonText = `${item.name} x ${quantity}`;
       createButton(container, buttonText, () =>
         addItemToSummary(item.name, quantity, item.price, summaryDiv)
       );
     });
-    addReturnButton(container, false);
+    addReturnButton(container, currentCategory);
   }
 
-  function addReturnButton(container, isTopCategory = false) {
-  if (!isTopCategory) {
+  function addReturnButton(container, parentCategory) {
     let returnButton = document.createElement("button");
     returnButton.textContent = "←";
     returnButton.className = "return-button";
     returnButton.onclick = () => {
-      clearItemButtons(container);
-      if (container.id === "buyItemButtons") {
-        const previousCategory = container.dataset.previousCategory || buyitems;
-        populateBuyButtons(previousCategory, container, true);
-      } else {
-        populateSellButtons();
-      }
+      populateBuyButtons(parentCategory, container, false);
     };
     container.appendChild(returnButton);
   }
-}
-
-function populateBuyButtons(items, container, isTopCategory = false, parentCategory = null) {
-  container.innerHTML = "";
-  container.dataset.previousCategory = parentCategory; // Store the previous category
-  Object.keys(items).forEach((category) => {
-    let button = document.createElement("button");
-    button.textContent = category;
-    button.className = "item-button";
-    if (Array.isArray(items[category])) {
-      button.onclick = () => {
-        container.innerHTML = "";
-        items[category].forEach((item) => {
-          let itemButton = document.createElement("button");
-          itemButton.textContent = item.name;
-          itemButton.className = "item-button";
-          itemButton.onclick = () => handleBuyItemClick(item);
-          container.appendChild(itemButton);
-        });
-        addReturnButton(container, false);
-      };
-    } else {
-      button.onclick = () => {
-        populateBuyButtons(items[category], container, false, items); // Pass the current category
-      };
-    }
-    container.appendChild(button);
-  });
-  if (!isTopCategory) addReturnButton(container, false);
-}
 
   function clearItemButtons(itemButtonsDiv) {
     itemButtonsDiv.innerHTML = "";
@@ -1077,8 +1068,7 @@ function populateBuyButtons(items, container, isTopCategory = false, parentCateg
       ) {
         createButton(itemButtonsDiv, item.name, () =>
           handleSellItemClick(item.name)
-        );
-      }
+        ); }
     });
     createButton(itemButtonsDiv, "Pelts", () =>
       populatePeltButtons(itemButtonsDiv, peltItems)
@@ -1250,6 +1240,7 @@ function populateBuyButtons(items, container, isTopCategory = false, parentCateg
     updateSummaries();
   }
 });
+
       </script>
 
 </body>
