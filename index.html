@@ -307,6 +307,8 @@ h2 {
   display: inline-block; /* Ensure buttons are inline */
   width: 150px; /* Fixed width */
   padding: 10px; /* Reduced padding inside the button */
+  padding-left: 2px; /* Reduced padding inside the button */
+
   margin: 5px; /* Margin around button */
   background-color: #444; /* Background color */
   color: white; /* Text color */
@@ -317,9 +319,6 @@ h2 {
   transition: background-color 0.2s, transform 0.2s; /* Smooth transition */
   white-space: nowrap; /* Prevent text from wrapping */
 }
-
-
-
 
 .item-button:hover {
   background-color: #555; /* Darker background on hover */
@@ -346,7 +345,7 @@ h2 {
 }
 
 .logo {
-  width: 100%; /* Shrinks the logo to 20% of its original size */
+  width: 20%; /* Shrinks the logo to 20% of its original size */
   height: auto; /* Maintains the aspect ratio */
   display: block; /* Ensures the image behaves like a block element */
   margin: 0 auto; /* Centers the image horizontally */
@@ -399,883 +398,285 @@ const buyitems = {
   "Weapons": {
     Guns: {
       Automatic: [
-        {
-          name: "Aug AX",
-          price: 3000
-        },
-        {
-          name: "M4A1",
-          price: 3000
-        },
-        {
-          name: "Vikhr",
-          price: 2000
-        },
-        {
-          name: "KAM",
-          price: 2000
-        },
-        {
-          name: "Vaiga",
-          price: 2000
-        }
+        { name: "Aug AX", price: 3000 },
+        { name: "M4A1", price: 3000 },
+        { name: "Vikhr", price: 2000 },
+        { name: "KAM", price: 2000 },
+        { name: "Vaiga", price: 2000 }
       ],
       Ranged: [
-        {
-          name: "LAR",
-          price: 2500
-        },
-        {
-          name: "DMR",
-          price: 2500
-        },
-        {
-          name: "M70 Tundra",
-          price: 2500
-        },
-        {
-          name: "Savanna",
-          price: 2500
-        },
-        {
-          name: "VSD",
-          price: 2000
-        },
-        {
-          name: "Mosin",
-          price: 2000
-        }
+        { name: "LAR", price: 2500 },
+        { name: "DMR", price: 2500 },
+        { name: "M70 Tundra", price: 2500 },
+        { name: "Savanna", price: 2500 },
+        { name: "VSD", price: 2000 },
+        { name: "Mosin", price: 2000 }
       ],
       Misc: [
-        {
-          name: "M79 Thumper",
-          price: 4000
-        },
-        {
-          name: "Crossbow",
-          price: 1500
-        }
+        { name: "M79 Thumper", price: 4000 },
+        { name: "Crossbow", price: 1500 }
       ],
       Pistols: [
-        {
-          name: "Revolver",
-          price: 750
-        },
-        {
-          name: "Engraved Kolt",
-          price: 750
-        },
-        {
-          name: "Deagle",
-          price: 750
-        }
+        { name: "Revolver", price: 750 },
+        { name: "Engraved Kolt", price: 750 },
+        { name: "Deagle", price: 750 }
       ],
       Knives: [
-        {
-          name: "Fange Knife",
-          price: 250
-        },
-        {
-          name: "Combat Knife",
-          price: 250
-        },
-        {
-          name: "Hunter Knife",
-          price: 250
-        }
+        { name: "Fange Knife", price: 250 },
+        { name: "Combat Knife", price: 250 },
+        { name: "Hunter Knife", price: 250 }
       ]
     },
     Attachments: {
       Suppressors: [
-        {
-          name: "Standardized Suppressor",
-          price: 750
-        },
-        {
-          name: "Normalized Suppressor",
-          price: 750
-        },
-        {
-          name: "Pistol Suppressor",
-          price: 100
-        },
-        {
-          name: "Bottle Suppressor",
-          price: 100
-        }
+        { name: "Standardized Suppressor", price: 750 },
+        { name: "Normalized Suppressor", price: 750 },
+        { name: "Pistol Suppressor", price: 100 },
+        { name: "Bottle Suppressor", price: 100 }
       ],
       "Weapon Parts": [
-        {
-          name: "LAR Lightweight Buttstock",
-          price: 100
-        },
-        {
-          name: "LAR Polymer Buttstock",
-          price: 100
-        },
-        {
-          name: "M4 CQB Buttstock",
-          price: 100
-        },
-        {
-          name: "M4 MP Buttstock",
-          price: 100
-        },
-        {
-          name: "M4 Polymer Handguard",
-          price: 100
-        },
-        {
-          name: "M4 MP Handguard",
-          price: 100
-        },
-        {
-          name: "KA Handguard",
-          price: 100
-        },
-        {
-          name: "KA Buttstock",
-          price: 100
-        }
+        { name: "LAR Lightweight Buttstock", price: 100 },
+        { name: "LAR Polymer Buttstock", price: 100 },
+        { name: "M4 CQB Buttstock", price: 100 },
+        { name: "M4 MP Buttstock", price: 100 },
+        { name: "M4 Polymer Handguard", price: 100 },
+        { name: "M4 MP Handguard", price: 100 },
+        { name: "KA Handguard", price: 100 },
+        { name: "KA Buttstock", price: 100 }
       ]
     },
     Optics: {
       "Short Range": [
-        {
-          name: "Red Dot (Baraka)",
-          price: 300
-        },
-        {
-          name: "Kobra Sights",
-          price: 300
-        },
-        {
-          name: "RVN Sights",
-          price: 300
-        },
-        {
-          name: "PSO-1 Scope",
-          price: 300
-        }
+        { name: "Red Dot (Baraka)", price: 300 },
+        { name: "Kobra Sights", price: 300 },
+        { name: "RVN Sights", price: 300 },
+        { name: "PSO-1 Scope", price: 300 }
       ],
       "Long Range": [
-        {
-          name: "ATOG 4x",
-          price: 300
-        },
-        {
-          name: "ATOG 6x",
-          price: 300
-        },
-        {
-          name: "PU Scope",
-          price: 300
-        },
-        {
-          name: "Hunter Scope",
-          price: 300
-        }
+        { name: "ATOG 4x", price: 300 },
+        { name: "ATOG 6x", price: 300 },
+        { name: "PU Scope", price: 300 },
+        { name: "Hunter Scope", price: 300 }
       ],
       "NV Optics": [
-        {
-          name: "Starlight NV",
-          price: 1000
-        },
-        {
-          name: "Kazuar NV",
-          price: 1000
-        }
+        { name: "Starlight NV", price: 1000 },
+        { name: "Kazuar NV", price: 1000 }
       ]
     },
     Magazines: {
       "Auto Mags": [
-        {
-          name: "40 Round C-Mag",
-          price: 500
-        },
-        {
-          name: "60 Round C-Mag",
-          price: 800
-        },
-        {
-          name: "30 Round KAM Poly Mag",
-          price: 200
-        },
-        {
-          name: "75 Round KAM Drum Mag",
-          price: 600
-        },
-        {
-          name: "20 Round Vaiga Drum Mag",
-          price: 200
-        },
-        {
-          name: "30 Round Vikhr Mag",
-          price: 500
-        }
+        { name: "40 Round C-Mag", price: 500 },
+        { name: "60 Round C-Mag", price: 800 },
+        { name: "30 Round KAM Poly Mag", price: 200 },
+        { name: "75 Round KAM Drum Mag", price: 600 },
+        { name: "20 Round Vaiga Drum Mag", price: 200 },
+        { name: "30 Round Vikhr Mag", price: 500 }
       ],
       "Sniper Mags": [
-        {
-          name: "20 Round DMR Mag",
-          price: 600
-        },
-        {
-          name: "20 Round LAR Mag",
-          price: 600
-        },
-        {
-          name: "10 Round VSD Mag",
-          price: 300
-        }
+        { name: "20 Round DMR Mag", price: 600 },
+        { name: "20 Round LAR Mag", price: 600 },
+        { name: "10 Round VSD Mag", price: 300 }
       ],
       "Pistol Mags": [
-        {
-          name: "Deagle Mag",
-          price: 250
-        },
-        {
-          name: "Kolt Mag",
-          price: 250
-        }
+        { name: "Deagle Mag", price: 250 },
+        { name: "Kolt Mag", price: 250 }
       ]
     },
     "Ammo": [
-      {
-        name: ".357",
-        price: 100
-      },
-      {
-        name: "9x39 AP",
-        price: 300
-      },
-      {
-        name: "9x19mm",
-        price: 100
-      },
-      {
-        name: "5.56x45",
-        price: 250
-      },
-      {
-        name: ".308 WIN",
-        price: 500
-      },
-      {
-        name: "545x39",
-        price: 250
-      },
-      {
-        name: "7.62x39",
-        price: 100
-      },
-      {
-        name: "7.62x54mmR",
-        price: 500
-      },
-      {
-        name: ".45ACP",
-        price: 100
-      },
-      {
-        name: "12GA Buck",
-        price: 100
-      },
-      {
-        name: "12GA Bean",
-        price: 100
-      },
-      {
-        name: "Crossbow Bolts",
-        price: 400
-      },
-      {
-        name: ".22LR",
-        price: 100
-      }
+      { name: ".357", price: 100 },
+      { name: "9x39 AP", price: 300 },
+      { name: "9x19mm", price: 100 },
+      { name: "5.56x45", price: 250 },
+      { name: ".308 WIN", price: 500 },
+      { name: "545x39", price: 250 },
+      { name: "7.62x39", price: 100 },
+      { name: "7.62x54mmR", price: 500 },
+      { name: ".45ACP", price: 100 },
+      { name: "12GA Buck", price: 100 },
+      { name: "12GA Bean", price: 100 },
+      { name: "Crossbow Bolts", price: 400 },
+      { name: ".22LR", price: 100 }
     ]
   },
   "Clothing": {
     Headgear: [
-      {
-        name: "Assault Helmet",
-        price: 850
-      },
-      {
-        name: "Assault Visor",
-        price: 150
-      },
-      {
-        name: "Tactical Helm",
-        price: 600
-      },
-      {
-        name: "NV Goggles",
-        price: 2500
-      },
-      {
-        name: "NVG Strap",
-        price: 300
-      },
-      {
-        name: "Witch Hood",
-        price: 500
-      },
-      {
-        name: "Cowboy Hat",
-        price: 300
-      },
-      {
-        name: "Ski Mask",
-        price: 200
-      },
-      {
-        name: "Mime Mask",
-        price: 250
-      },
-      {
-        name: "Carnival Mask",
-        price: 200
-      },
-      {
-        name: "Aviators",
-        price: 100
-      }
+      { name: "Assault Helmet", price: 850 },
+      { name: "Assault Visor", price: 150 },
+      { name: "Tactical Helm", price: 600 },
+      { name: "NV Goggles", price: 2500 },
+      { name: "NVG Strap", price: 300 },
+      { name: "Witch Hood", price: 500 },
+      { name: "Cowboy Hat", price: 300 },
+      { name: "Ski Mask", price: 200 },
+      { name: "Mime Mask", price: 250 },
+      { name: "Carnival Mask", price: 200 },
+      { name: "Aviators", price: 100 }
     ],
     Jackets: [
-      {
-        name: "BDU Jacket",
-        price: 600
-      },
-      {
-        name: "Combat Jacket",
-        price: 600
-      },
-      {
-        name: "Field Jacket",
-        price: 600
-      },
-      {
-        name: "Hunter Jacket",
-        price: 600
-      }
+      { name: "BDU Jacket", price: 600 },
+      { name: "Combat Jacket", price: 600 },
+      { name: "Field Jacket", price: 600 },
+      { name: "Hunter Jacket", price: 600 }
     ],
     Backpacks: [
-      {
-        name: "Field Bag",
-        price: 600
-      },
-      {
-        name: "Hunter Backpack",
-        price: 400
-      },
-      {
-        name: "Skull Backpack",
-        price: 500
-      },
-      {
-        name: "Combat Backpack",
-        price: 400
-      },
-      {
-        name: "Black Drypack",
-        price: 400
-      },
-      {
-        name: "Assault Bag",
-        price: 200
-      },
-      {
-        name: "Army Pouch",
-        price: 200
-      }
+      { name: "Field Bag", price: 600 },
+      { name: "Hunter Backpack", price: 400 },
+      { name: "Skull Backpack", price: 500 },
+      { name: "Combat Backpack", price: 400 },
+      { name: "Black Drypack", price: 400 },
+      { name: "Assault Bag", price: 200 },
+      { name: "Army Pouch", price: 200 }
     ],
     "Plate Carriers": [
-      {
-        name: "Plate Carrier",
-        price: 1800
-      },
-      {
-        name: "Pouches",
-        price: 200
-      },
-      {
-        name: "Holster",
-        price: 50
-      }
+      { name: "Plate Carrier", price: 1800 },
+      { name: "Pouches", price: 200 },
+      { name: "Holster", price: 50 }
     ],
     Pants: [
-      {
-        name: "BDU Pants",
-        price: 500
-      },
-      {
-        name: "Combat Pants",
-        price: 500
-      },
-      {
-        name: "Cargo Pants",
-        price: 500
-      },
-      {
-        name: "Hunter Pants",
-        price: 500
-      }
+      { name: "BDU Pants", price: 500 },
+      { name: "Combat Pants", price: 500 },
+      { name: "Cargo Pants", price: 500 },
+      { name: "Hunter Pants", price: 500 }
     ],
     "Misc Clothing": [
-      {
-        name: "Gloves",
-        price: 300
-      },
-      {
-        name: "Sheath",
-        price: 100
-      },
-      {
-        name: "Belt",
-        price: 100
-      },
-      {
-        name: "Hip Pack",
-        price: 300
-      }
+      { name: "Gloves", price: 300 },
+      { name: "Sheath", price: 100 },
+      { name: "Belt", price: 100 },
+      { name: "Hip Pack", price: 300 }
     ],
     Boots: [
-      {
-        name: "Black Assault Boots",
-        price: 500
-      },
-      {
-        name: "Tan Jungle Boots",
-        price: 300
-      },
-      {
-        name: "Green Jungle Boots",
-        price: 300
-      }
+      { name: "Black Assault Boots", price: 500 },
+      { name: "Tan Jungle Boots", price: 300 },
+      { name: "Green Jungle Boots", price: 300 }
     ],
     Ghillie: [
-      {
-        name: "Ghillie Suit",
-        price: 1800
-      },
-      {
-        name: "Ghillie Hood",
-        price: 800
-      },
-      {
-        name: "Ghillie Rifle Wrap",
-        price: 500
-      }
+      { name: "Ghillie Suit", price: 1800 },
+      { name: "Ghillie Hood", price: 800 },
+      { name: "Ghillie Rifle Wrap", price: 500 }
     ],
     "NBC Gear": [
-      {
-        name: "Gas Masks",
-        price: 1000
-      },
-      {
-        name: "NBC Filters",
-        price: 400
-      },
-      {
-        name: "NBC Jacket",
-        price: 600
-      },
-      {
-        name: "NBC Pants",
-        price: 600
-      },
-      {
-        name: "NBC Gloves",
-        price: 400
-      },
-      {
-        name: "NBC Boots",
-        price: 400
-      },
-      {
-        name: "NBC Hood",
-        price: 600
-      }
+      { name: "Gas Masks", price: 1000 },
+      { name: "NBC Filters", price: 400 },
+      { name: "NBC Jacket", price: 600 },
+      { name: "NBC Pants", price: 600 },
+      { name: "NBC Gloves", price: 400 },
+      { name: "NBC Boots", price: 400 },
+      { name: "NBC Hood", price: 600 }
     ]
   },
   "Meds & Tools": {
     Pharmaceuticals: [
-      {
-        name: "Bandages",
-        price: 200
-      },
-      {
-        name: "Saline Bag",
-        price: 400
-      },
-      {
-        name: "Tetracycline",
-        price: 500
-      },
-      {
-        name: "Charcoal Tablets",
-        price: 500
-      },
-      {
-        name: "Multi Vitamins",
-        price: 100
-      },
-      {
-        name: "PoX Antidote",
-        price: 1000
-      },
-      {
-        name: "Morphine",
-        price: 300
-      },
-      {
-        name: "Blood Test Kit",
-        price: 100
-      },
-      {
-        name: "Blood Collection Kit",
-        price: 200
-      },
-      {
-        name: "IV Start Kit",
-        price: 100
-      },
-      {
-        name: "Cupid Shot",
-        price: 500
-      }
+      { name: "Bandages", price: 200 },
+      { name: "Saline Bag", price: 400 },
+      { name: "Tetracycline", price: 500 },
+      { name: "Charcoal Tablets", price: 500 },
+      { name: "Multi Vitamins", price: 100 },
+      { name: "PoX Antidote", price: 1000 },
+      { name: "Morphine", price: 300 },
+      { name: "Blood Test Kit", price: 100 },
+      { name: "Blood Collection Kit", price: 200 },
+      { name: "IV Start Kit", price: 100 }
     ],
     Miscellaneous: [
-      {
-        name: "Canteen",
-        price: 200
-      },
-      {
-        name: "Tourist Map",
-        price: 400
-      },
-      {
-        name: "9V Batteries",
-        price: 25
-      },
-      {
-        name: "Bear Trap",
-        price: 500
-      },
-      {
-        name: "Construction Light",
-        price: 400
-      },
-      {
-        name: "Cable Reel",
-        price: 400
-      },
-      {
-        name: "Electrical Repair Kit",
-        price: 400
-      },
-      {
-        name: "Faction Flags",
-        price: 500
-      },
-      {
-        name: "Power Generator",
-        price: 800
-      },
-      {
-        name: "Megaphone",
-        price: 300
-      },
-      {
-        name: "Gun Cleaning Kit",
-        price: 400
-      },
-      {
-        name: "Duct Tape",
-        price: 200
-      },
-      {
-        name: "Sewing Kit",
-        price: 300
-      },
-      {
-        name: "GPS Receiver",
-        price: 300
-      },
-      {
-        name: "Leather Repair Kit",
-        price: 300
-      },
-      {
-        name: "Epoxy Putty",
-        price: 400
-      },
-      {
-        name: "Rangefinder",
-        price: 400
-      },
-      {
-        name: "Canned Bacon",
-        price: 200
-      },
-      {
-        name: "Fronta Lemonade",
-        price: 100
-      }
+      { name: "Canteen", price: 200 },
+      { name: "Tourist Map", price: 400 },
+      { name: "9V Batteries", price: 25 },
+      { name: "Bear Trap", price: 500 },
+      { name: "Construction Light", price: 400 },
+      { name: "Cable Reel", price: 400 },
+      { name: "Electrical Repair Kit", price: 400 },
+      { name: "Faction Flags", price: 500 },
+      { name: "Power Generator", price: 800 },
+      { name: "Megaphone", price: 300 },
+      { name: "Gun Cleaning Kit", price: 400 },
+      { name: "Duct Tape", price: 200 },
+      { name: "Sewing Kit", price: 300 },
+      { name: "GPS Receiver", price: 300 },
+      { name: "Leather Repair Kit", price: 300 },
+      { name: "Epoxy Putty", price: 400 },
+      { name: "Rangefinder", price: 400 },
+      { name: "Canned Bacon", price: 200 },
+      { name: "Fronta Lemonade", price: 100 }
     ]
   },
   Explosives: {
     "IED Components": [
-      {
-        name: "IED Container",
-        price: 400
-      },
-      {
-        name: "Plastic Explosives",
-        price: 3000
-      },
-      {
-        name: "Detonator",
-        price: 100
-      }
+      { name: "IED Container", price: 400 },
+      { name: "Plastic Explosives", price: 3000 },
+      { name: "Detonator", price: 100 }
     ],
     "Other Explosives": [
-      {
-        name: "US/RUS Grenades",
-        price: 500
-      },
-      {
-        name: "POX Vial",
-        price: 800
-      },
-      {
-        name: "Flashbangs",
-        price: 200
-      },
-      {
-        name: "Land Mines",
-        price: 500
-      },
-      {
-        name: "40MM Explosive",
-        price: 1500
-      },
-      {
-        name: "40MM Pox Grenade",
-        price: 1500
-      },
-      {
-        name: "Claymores",
-        price: 750
-      }
+      { name: "US/RUS Grenades", price: 500 },
+      { name: "POX Vial", price: 800 },
+      { name: "Flashbangs", price: 200 },
+      { name: "Land Mines", price: 500 },
+      { name: "40MM Explosive", price: 1500 },
+      { name: "40MM Pox Grenade", price: 1500 },
+      { name: "Claymores", price: 750 }
     ]
   },
   Storage: [
-    {
-      name: "Car Tent",
-      price: 3000
-    },
-    {
-      name: "Large Tent",
-      price: 2000
-    },
-    {
-      name: "Medium Tent",
-      price: 1200
-    },
-    {
-      name: "Sea Chest",
-      price: 800
-    },
-    {
-      name: "Barrel",
-      price: 1000
-    },
-    {
-      name: "Ammo Box",
-      price: 50
-    }
+    { name: "Car Tent", price: 3000 },
+    { name: "Large Tent", price: 2000 },
+    { name: "Medium Tent", price: 1200 },
+    { name: "Sea Chest", price: 800 },
+    { name: "Barrel", price: 1000 },
+    { name: "Ammo Box", price: 50 }
   ],
   "Building": [
-    {
-      name: "Box of Nails",
-      price: 500
-    },
-    {
-      name: "Sharpening Stones",
-      price: 400
-    },
-    {
-      name: "4Dial Combo Lock",
-      price: 500
-    },
-    {
-      name: "Hatchet",
-      price: 500
-    },
-    {
-      name: "Hacksaws",
-      price: 400
-    },
-    {
-      name: "Sledgehammer",
-        price: 300
-    },
-    {
-      name: "Pickaxe",
-      price: 400
-    },
-    {
-      name: "Field Shovel",
-      price: 300
-    },
-    {
-      name: "Crowbar",
-      price: 300
-    },
-    {
-      name: "Fireaxe",
-      price: 400
-    },
-    {
-      name: "Metal Wire",
-      price: 300
-    },
-    {
-      name: "Barbwire",
-      price: 300
-    },
-    {
-      name: "Pliers",
-      price: 300
-    },
-    {
-      name: "Camo Netting",
-      price: 400
-    },
-    {
-      name: "Rope",
-      price: 50
-    },
-    {
-      name: "Sheet Metal",
-      price: 1500
-    }
+    { name: "Box of Nails", price: 500, bulkOptions: [1, 5, 10, 20] },
+    { name: "Sharpening Stones", price: 400, bulkOptions: [1, 5, 10, 20] },
+    { name: "4Dial Combo Lock", price: 500 },
+    { name: "Hatchet", price: 500 },
+    { name: "Hacksaws", price: 400 },
+    { name: "Sledgehammer", price: 300 },
+    { name: "Pickaxe", price: 400 },
+    { name: "Field Shovel", price: 300 },
+    { name: "Crowbar", price: 300 },
+    { name: "Fireaxe", price: 400 },
+    { name: "Metal Wire", price: 300 },
+    { name: "Barbwire", price: 300 },
+    { name: "Pliers", price: 300 },
+    { name: "Camo Netting", price: 400 },
+    { name: "Rope", price: 50 },
+    { name: "Sheet Metal", price: 1500 }
   ],
-"Vehicles": {
+  "Vehicles": {
     "Repair": [
-      {
-        name: "Jerry Can",
-        price: 200
-      },
-      {
-        name: "Blowtorch",
-        price: 400
-      },
-      {
-        name: "Gas Canister",
-        price: 250
-      },
-      {
-        name: "Tire Repair Kit",
-        price: 200
-      },
-      {
-        name: "Battery Charger",
-        price: 400
-      }
+      { name: "Jerry Can", price: 200 },
+      { name: "Blowtorch", price: 400 },
+      { name: "Gas Canister", price: 250 },
+      { name: "Tire Repair Kit", price: 200 },
+      { name: "Battery Charger", price: 400 }
     ],
     "Parts": [
-      {
-        name: "Spark Plug",
-        price: 200
-      },
-      {
-        name: "Glow Plug",
-        price: 400
-      },
-      {
-        name: "Car Battery",
-        price: 200
-      },
-      {
-        name: "Truck Battery",
-        price: 400
-      },
-      {
-        name: "Car Radiator",
-        price: 500
-      }
+      { name: "Spark Plug", price: 200 },
+      { name: "Glow Plug", price: 400 },
+      { name: "Car Battery", price: 200 },
+      { name: "Truck Battery", price: 400 },
+      { name: "Car Radiator", price: 500 }
     ],
     "Tires": [
-      {
-        name: "Car Tires",
-        price: 300
-      },
-      {
-        name: "Humvee Tires",
-        price: 800
-      },
-      {
-        name: "Truck Tires",
-        price: 400
-      }
+      { name: "Car Tires", price: 300 },
+      { name: "Humvee Tires", price: 800 },
+      { name: "Truck Tires", price: 400 }
     ]
   }
 };
 const sellitems = [
-  {
-    name: "Hockey Stick",
-    price: 400
-  },
-  {
-    name: "Meat Tenderizers",
-    price: 150
-  },
-  {
-    name: "Cigarettes",
-    price: 50
-  },
-  {
-    name: "Books",
-    price: 100
-  },
-  {
-    name: "Bible",
-    price: 10000
-  },
-  {
-    name: "Golden Deagle",
-    price: 25000
-  },
-  {
-    name: "Deer Pelt",
-    price: 300
-  },
-  {
-    name: "Boar Pelt",
-    price: 500
-  },
-  {
-    name: "Wolf Pelt",
-    price: 400
-  },
-  {
-    name: "Bear Pelt",
-    price: 800
-  },
-  {
-    name: "Tanned Leather",
-    price: 200
-  },
-  {
-    name: "Cannabis",
-    price: 10
-  },
-  {
-    name: "Set of 4 Teddy Bears",
-    price: 2000
-  }
+  { name: "Hockey Stick", price: 400 },
+  { name: "Meat Tenderizers", price: 150 },
+  { name: "Cigarettes", price: 50 },
+  { name: "Books", price: 100 },
+  { name: "Bible", price: 10000 },
+  { name: "Golden Deagle", price: 25000 },
+  { name: "Deer Pelt", price: 300 },
+  { name: "Boar Pelt", price: 500 },
+  { name: "Wolf Pelt", price: 400 },
+  { name: "Bear Pelt", price: 800 },
+  { name: "Tanned Leather", price: 200 },
+  { name: "Cannabis", price: 10 },
+  { name: "Set of 4 Teddy Bears", price: 2000 }
 ];
 const roles = {
   "Noob Tube": {
@@ -1488,8 +889,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let itemButton = document.createElement("button");
             itemButton.textContent = item.name;
             itemButton.className = "item-button";
-            itemButton.onclick = () =>
-              addItemToSummary(item.name, 1, item.price, buySummaryDiv);
+            itemButton.onclick = () => handleBuyItemClick(item);
             container.appendChild(itemButton);
           });
           addReturnButton(container, false);
@@ -1502,6 +902,27 @@ document.addEventListener("DOMContentLoaded", function () {
       container.appendChild(button);
     });
     if (!isTopCategory) addReturnButton(container, false);
+  }
+
+  function handleBuyItemClick(item) {
+    const buyItemButtonsDiv = document.getElementById("buyItemButtons");
+    clearItemButtons(buyItemButtonsDiv);
+    if (item.bulkOptions) {
+      populateBulkOptions(buyItemButtonsDiv, item);
+    } else {
+      addItemToSummary(item.name, 1, item.price, buySummaryDiv);
+      populateBuyButtons(buyitems, buyItemButtonsDiv, true); // Repopulate buttons to prevent breaking the calculator
+    }
+  }
+
+  function populateBulkOptions(container, item) {
+    item.bulkOptions.forEach((quantity) => {
+      let buttonText = `${item.name} x ${quantity}`;
+      createButton(container, buttonText, () =>
+        addItemToSummary(item.name, quantity, item.price, buySummaryDiv)
+      );
+    });
+    addReturnButton(container, false);
   }
 
   function populateSellButtons() {
@@ -1554,22 +975,28 @@ document.addEventListener("DOMContentLoaded", function () {
     clearItemButtons(itemButtonsDiv);
     switch (itemName) {
       case "Cannabis":
-        populateBulkOptions(itemButtonsDiv, itemName, [1, 10, 50, 1200], true);
-        break;
-      case "Tanned Leather":
-        populateBulkOptions(itemButtonsDiv, itemName, [1, 8], false);
-        break;
-      case "Books":
-        populateBulkOptions(itemButtonsDiv, itemName, [1, 5, 20], false);
-        break;
-      case "Hockey Stick":
-        populateBulkOptions(itemButtonsDiv, itemName, [1, 5, 10, 50], true);
-        break;
-      case "Meat Tenderizers":
-        populateBulkOptions(itemButtonsDiv, itemName, [1, 5, 10, 200], true);
+        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 10, bulkOptions: [1, 10, 50, 1200] });
         break;
       case "Cigarettes":
-        populateBulkOptions(itemButtonsDiv, itemName, [1, 10, 50, 250], true);
+        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 50, bulkOptions: [1, 10, 50, 250] });
+        break;
+      case "Box of Nails":
+        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 500, bulkOptions: [1, 5, 10, 20] });
+        break;
+      case "Sharpening Stones":
+        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 20] });
+        break;
+      case "Tanned Leather":
+        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 200, bulkOptions: [1, 8] });
+        break;
+      case "Books":
+        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 100, bulkOptions: [1, 5, 20] });
+        break;
+      case "Hockey Stick":
+        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 50] });
+        break;
+      case "Meat Tenderizers":
+        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 150, bulkOptions: [1, 5, 10, 200] });
         break;
       case "Golden Deagle":
       case "Set of 4 Teddy Bears":
@@ -1589,18 +1016,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function populateBulkOptions(container, itemName, quantities, isRole) {
-    let price = sellitems.find((item) => item.name === itemName).price;
-    quantities.forEach((quantity) => {
-      let buttonText = itemName + " x " + quantity;
-      if (
-        isRole &&
-        (quantity === 1200 || quantity === 200 || quantity === 250)
-      ) {
-        buttonText = "Role Turn-In";
-      }
+  function populateBulkOptions(container, item) {
+    item.bulkOptions.forEach((quantity) => {
+      let buttonText = `${item.name} x ${quantity}`;
       createButton(container, buttonText, () =>
-        addItemToSummary(itemName, quantity, price, sellSummaryDiv)
+        addItemToSummary(item.name, quantity, item.price, buySummaryDiv)
       );
     });
     addReturnButton(container, false);
