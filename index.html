@@ -862,8 +862,7 @@ const roles = {
   }
 };
 // END OF ITEMS AND ROLES
-
-  document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const buyItemButtonsDiv = document.getElementById("buyItemButtons");
   const sellSummaryDiv = document.getElementById("sellSummary");
   const buySummaryDiv = document.getElementById("buySummary");
@@ -873,7 +872,7 @@ const roles = {
   const clearRolesBtn = document.getElementById("clearRolesBtn");
   const calculateBtn = document.getElementById("calculateBtn");
   const tablinks = document.getElementsByClassName("tablinks");
-  let currentCategory = buyitems;
+  let navigationStack = [buyitems];
 
   populateBuyButtons(buyitems, buyItemButtonsDiv, true);
   populateSellButtons();
@@ -896,17 +895,18 @@ const roles = {
             itemButton.onclick = () => handleBuyItemClick(item);
             container.appendChild(itemButton);
           });
-          addReturnButton(container, items);
+          navigationStack.push(items); // Push the current items to the navigation stack
+          addReturnButton(container);
         };
       } else {
         button.onclick = () => {
-          currentCategory = items[category];
+          navigationStack.push(items); // Push the current items to the navigation stack
           populateBuyButtons(items[category], container, false);
         };
       }
       container.appendChild(button);
     });
-    if (!isTopCategory) addReturnButton(container, items);
+    if (!isTopCategory) addReturnButton(container);
   }
 
   function handleBuyItemClick(item) {
@@ -975,15 +975,19 @@ const roles = {
         addItemToSummary(item.name, quantity, item.price, summaryDiv)
       );
     });
-    addReturnButton(container, currentCategory);
+    addReturnButton(container);
   }
 
-  function addReturnButton(container, parentCategory) {
+  function addReturnButton(container) {
     let returnButton = document.createElement("button");
     returnButton.textContent = "←";
     returnButton.className = "return-button";
     returnButton.onclick = () => {
-      populateBuyButtons(parentCategory, container, false);
+      if (navigationStack.length > 1) {
+        navigationStack.pop(); // Remove the current level from the stack
+        const previousCategory = navigationStack[navigationStack.length - 1];
+        populateBuyButtons(previousCategory, container, false);
+      }
     };
     container.appendChild(returnButton);
   }
@@ -1068,7 +1072,8 @@ const roles = {
       ) {
         createButton(itemButtonsDiv, item.name, () =>
           handleSellItemClick(item.name)
-        ); }
+        );
+      }
     });
     createButton(itemButtonsDiv, "Pelts", () =>
       populatePeltButtons(itemButtonsDiv, peltItems)
@@ -1240,9 +1245,6 @@ const roles = {
     updateSummaries();
   }
 });
-
-      </script>
-
+ </script>
 </body>
-
 </html>
