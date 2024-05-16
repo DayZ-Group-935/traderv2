@@ -977,50 +977,50 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function handleSellItemClick(itemName) {
-    const itemButtonsDiv = document.getElementById("itemButtons");
-    clearItemButtons(itemButtonsDiv);
-    switch (itemName) {
-      case "Cannabis":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 10, bulkOptions: [1, 10, 50, 1200] });
-        break;
-      case "Cigarettes":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 50, bulkOptions: [1, 10, 50, 250] });
-        break;
-      case "Box of Nails":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 500, bulkOptions: [1, 5, 10, 20] });
-        break;
-      case "Sharpening Stones":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 20] });
-        break;
-      case "Tanned Leather":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 200, bulkOptions: [1, 8] });
-        break;
-      case "Books":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 100, bulkOptions: [1, 5, 20] });
-        break;
-      case "Hockey Stick":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 50] });
-        break;
-      case "Meat Tenderizers":
-        populateBulkOptions(itemButtonsDiv, { name: itemName, price: 150, bulkOptions: [1, 5, 10, 200] });
-        break;
-      case "Golden Deagle":
-      case "Set of 4 Teddy Bears":
-      case "Bible":
-        addItemToSummary(itemName, 1, 10000, sellSummaryDiv); // Set initial price for Bible to 10000
-        populateSellButtons(); // Repopulate buttons to prevent breaking the calculator
-        break;
-      default:
-        addItemToSummary(
-          itemName,
-          1,
-          sellitems.find((item) => item.name === itemName).price,
-          sellSummaryDiv
-        );
-        populateSellButtons(); // Repopulate buttons to prevent breaking the calculator
-        break;
-    }
+  const itemButtonsDiv = document.getElementById("itemButtons");
+  clearItemButtons(itemButtonsDiv);
+  switch (itemName) {
+    case "Cannabis":
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 10, bulkOptions: [1, 10, 50, 1200] });
+      break;
+    case "Cigarettes":
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 50, bulkOptions: [1, 10, 50, 250] });
+      break;
+    case "Box of Nails":
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 500, bulkOptions: [1, 5, 10, 20] });
+      break;
+    case "Sharpening Stones":
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 20] });
+      break;
+    case "Tanned Leather":
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 200, bulkOptions: [1, 8] });
+      break;
+    case "Books":
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 100, bulkOptions: [1, 5, 20] });
+      break;
+    case "Hockey Stick":
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 400, bulkOptions: [1, 5, 10, 50] });
+      break;
+    case "Meat Tenderizers":
+      populateBulkOptions(itemButtonsDiv, { name: itemName, price: 150, bulkOptions: [1, 5, 10, 200] });
+      break;
+    case "Golden Deagle":
+    case "Set of 4 Teddy Bears":
+    case "Bible":
+      addItemToSummary(itemName, 1, 10000, sellSummaryDiv); // Set initial price for Bible to 10000
+      populateSellButtons(); // Repopulate buttons to prevent breaking the calculator
+      break;
+    default:
+      addItemToSummary(
+        itemName,
+        1,
+        sellitems.find((item) => item.name === itemName).price,
+        sellSummaryDiv
+      );
+      populateSellButtons(); // Repopulate buttons to prevent breaking the calculator
+      break;
   }
+}
 
   function populateBulkOptions(container, item) {
     item.bulkOptions.forEach((quantity) => {
