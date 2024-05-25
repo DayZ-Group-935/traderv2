@@ -24,7 +24,7 @@
   .roles-container {
     display: flex;
     flex-direction: column;
-    max-width: 410px;
+    max-width: 380px;
     width: 100%;
     margin: 20px auto;
     padding: 20px;
@@ -166,7 +166,7 @@
 
   .tab button {
     background-color: #171721;
-    width: 180px;
+    width: 160px;
     color: darkgrey;
     font-weight: bold;
     float: left;
@@ -320,10 +320,12 @@
 
   .item-button {
     display: inline-block;
-    width: 150px;
+    width: 135px;
     padding: 10px;
     padding-left: 2px;
     margin: 5px;
+    font-size: 11.5px;
+
     background-color: #444;
     color: white;
     border: 2px solid darkgrey;
@@ -524,10 +526,6 @@
               price: 100
             },
             {
-              name: "M4 MP Buttstock",
-              price: 100
-            },
-            {
               name: "M4 Polymer Handguard",
               price: 100
             },
@@ -641,55 +639,68 @@
         },
         "Ammo": [{
             name: ".357",
-            price: 100
+            price: 100,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "9x39 AP",
-            price: 300
+            price: 300,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "9x19mm",
-            price: 100
+            price: 100,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "5.56x45",
-            price: 250
+            price: 250,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: ".308 WIN",
-            price: 500
+            price: 500,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "545x39",
-            price: 250
+            price: 250,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "7.62x39",
-            price: 100
+            price: 100,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "7.62x54mmR",
-            price: 500
+            price: 500,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: ".45ACP",
-            price: 100
+            price: 100,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "12GA Buck",
-            price: 100
+            price: 100,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "12GA Bean",
-            price: 100
+            price: 100,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "Crossbow Bolts",
-            price: 400
+            price: 400,
+            bulkOptions: [1, 2, 5]
           },
           {
             name: ".22LR",
-            price: 100
+            price: 100,
+            bulkOptions: [1, 5, 10]
           }
         ]
       },
@@ -731,10 +742,6 @@
             price: 250
           },
           {
-            name: "Carnival Mask",
-            price: 200
-          },
-          {
             name: "Aviators",
             price: 100
           }
@@ -749,6 +756,10 @@
           },
           {
             name: "Field Jacket",
+            price: 600
+          },
+          {
+            name: "CUU Jacket",
             price: 600
           },
           {
@@ -808,6 +819,10 @@
           },
           {
             name: "Cargo Pants",
+            price: 500
+          },
+          {
+            name: "CUU Pants",
             price: 500
           },
           {
@@ -931,6 +946,10 @@
             price: 200
           },
           {
+            name: "Vitality Shot",
+            price: 500
+          },
+          {
             name: "IV Start Kit",
             price: 100
           }
@@ -945,7 +964,8 @@
           },
           {
             name: "9V Batteries",
-            price: 25
+            price: 25,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "Bear Trap",
@@ -957,10 +977,6 @@
           },
           {
             name: "Cable Reel",
-            price: 400
-          },
-          {
-            name: "Electrical Repair Kit",
             price: 400
           },
           {
@@ -1024,7 +1040,8 @@
           },
           {
             name: "IED Complete",
-            price: 6500
+            price: 6500,
+            bulkOptions: [1, 2, 5]
           }
         ],
         "Other Explosives": [{
@@ -1034,23 +1051,28 @@
           },
           {
             name: "POX Vial",
-            price: 800
+            price: 800,
+            bulkOptions: [1, 2, 5]
           },
           {
             name: "Flashbangs",
-            price: 200
+            price: 200,
+            bulkOptions: [1, 2, 5]
           },
           {
             name: "Land Mines",
-            price: 500
+            price: 500,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "40MM Explosive",
-            price: 1500
+            price: 1500,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "40MM Pox Grenade",
-            price: 1500
+            price: 1500,
+            bulkOptions: [1, 5, 10]
           },
           {
             name: "Claymores",
@@ -1076,11 +1098,13 @@
         },
         {
           name: "Barrel",
-          price: 1000
+          price: 1000,
+          bulkOptions: [1, 2, 5]
         },
         {
           name: "Ammo Box",
-          price: 50
+          price: 50,
+          bulkOptions: [1, 2, 5]
         }
       ],
       "Building": [{
@@ -1128,11 +1152,13 @@
         },
         {
           name: "Metal Wire",
-          price: 300
+          price: 300,
+          bulkOptions: [1, 2, 5]
         },
         {
           name: "Barbwire",
-          price: 300
+          price: 300,
+          bulkOptions: [1, 2, 5]
         },
         {
           name: "Pliers",
@@ -1144,7 +1170,8 @@
         },
         {
           name: "Rope",
-          price: 50
+          price: 50,
+          bulkOptions: [1, 5, 10]
         },
         {
           name: "Sheet Metal",
@@ -1209,21 +1236,26 @@
         ]
       }
     };
+
     const sellitems = [{
         name: "Hockey Stick",
-        price: 400
+        price: 400,
+        bulkOptions: [1, 5, 10]
       },
       {
         name: "Meat Tenderizers",
-        price: 150
+        price: 150,
+        bulkOptions: [1, 5, 10]
       },
       {
         name: "Cigarettes",
-        price: 50
+        price: 50,
+        bulkOptions: [1, 10, 50, 100]
       },
       {
         name: "Books",
-        price: 100
+        price: 100,
+        bulkOptions: [1, 5, 10]
       },
       {
         name: "Bible",
@@ -1234,34 +1266,44 @@
         price: 25000
       },
       {
-        name: "Deer Pelt",
-        price: 300
-      },
-      {
-        name: "Boar Pelt",
-        price: 500
-      },
-      {
-        name: "Wolf Pelt",
-        price: 400
-      },
-      {
-        name: "Bear Pelt",
-        price: 800
-      },
-      {
-        name: "Tanned Leather",
-        price: 200
+        name: "Set of 4 Teddy Bears",
+        price: 2000,
+        bulkOptions: [1, 5]
       },
       {
         name: "Cannabis",
-        price: 10
+        price: 10,
+        bulkOptions: [1, 10, 50, 100]
       },
       {
-        name: "Set of 4 Teddy Bears",
-        price: 2000
+        name: "Tanned Leather",
+        price: 200,
+        bulkOptions: [1, 8, 40]
       }
     ];
+
+    const pelts = [{
+        name: "Deer Pelt",
+        price: 300,
+        bulkOptions: [1, 5, 10]
+      },
+      {
+        name: "Boar Pelt",
+        price: 500,
+        bulkOptions: [1, 5, 10]
+      },
+      {
+        name: "Wolf Pelt",
+        price: 400,
+        bulkOptions: [1, 5, 10]
+      },
+      {
+        name: "Bear Pelt",
+        price: 800,
+        bulkOptions: [1, 5, 10]
+      }
+    ];
+
     const roles = {
       "Noob Tube": {
         description: "Kill 2 players with 1 M79 round.",
@@ -1364,7 +1406,7 @@
         }
       },
       "Meet Your Beat": {
-        description: "Turn in 200 Meat Tenderizers to Trader at once.",
+        description: "Turn in 50 Meat Tenderizers to Trader at once.",
         bonuses: {
           "Meat Tenderizers": 300
         }
@@ -1440,6 +1482,7 @@
         bonuses: {}
       }
     };
+
     // END OF ITEMS AND ROLES
     document.addEventListener("DOMContentLoaded", function() {
       const buyItemButtonsDiv = document.getElementById("buyItemButtons");
@@ -1522,6 +1565,9 @@
             addItemToSummary(item.name, quantity, item.price, summaryDiv)
           );
         });
+        createButton(container, "Role Turn-In", () => {
+          handleRoleTurnIn(item, summaryDiv);
+        });
         addReturnButton(container, type); // Ensure the return button is added in the bulk options view with the correct type
       }
 
@@ -1537,80 +1583,11 @@
         }
       }
 
-      function handleSellItemClick(itemName) {
-        clearItemButtons(sellItemButtonsDiv);
-        switch (itemName) {
-          case "Cannabis":
-            populateBulkOptions(sellItemButtonsDiv, {
-              name: itemName,
-              price: 10,
-              bulkOptions: [1, 10, 50, 1200]
-            }, sellSummaryDiv, "sell");
-            break;
-          case "Cigarettes":
-            populateBulkOptions(sellItemButtonsDiv, {
-              name: itemName,
-              price: 50,
-              bulkOptions: [1, 10, 50, 250]
-            }, sellSummaryDiv, "sell");
-            break;
-          case "Box of Nails":
-            populateBulkOptions(sellItemButtonsDiv, {
-              name: itemName,
-              price: 500,
-              bulkOptions: [1, 5, 10, 20]
-            }, sellSummaryDiv, "sell");
-            break;
-          case "Sharpening Stones":
-            populateBulkOptions(sellItemButtonsDiv, {
-              name: itemName,
-              price: 400,
-              bulkOptions: [1, 5, 10, 20]
-            }, sellSummaryDiv, "sell");
-            break;
-          case "Tanned Leather":
-            populateBulkOptions(sellItemButtonsDiv, {
-              name: itemName,
-              price: 200,
-              bulkOptions: [1, 8]
-            }, sellSummaryDiv, "sell");
-            break;
-          case "Books":
-            populateBulkOptions(sellItemButtonsDiv, {
-              name: itemName,
-              price: 100,
-              bulkOptions: [1, 5, 20]
-            }, sellSummaryDiv, "sell");
-            break;
-          case "Hockey Stick":
-            populateBulkOptions(sellItemButtonsDiv, {
-              name: itemName,
-              price: 400,
-              bulkOptions: [1, 5, 10, 50]
-            }, sellSummaryDiv, "sell");
-            break;
-          case "Meat Tenderizers":
-            populateBulkOptions(sellItemButtonsDiv, {
-              name: itemName,
-              price: 150,
-              bulkOptions: [1, 5, 10, 200]
-            }, sellSummaryDiv, "sell");
-            break;
-          case "Golden Deagle":
-          case "Set of 4 Teddy Bears":
-          case "Bible":
-            addItemToSummary(itemName, 1, sellitems.find((item) => item.name === itemName).price, sellSummaryDiv);
-            populateSellButtons(); // Repopulate buttons to prevent breaking the calculator
-            break;
-          default:
-            addItemToSummary(
-              itemName,
-              1,
-              sellitems.find((item) => item.name === itemName).price,
-              sellSummaryDiv
-            );
-            populateSellButtons(); // Repopulate buttons to prevent breaking the calculator
-            break;
+      function handleSellItemClick(item) {
+        if (item.bulkOptions) {
+          populateBulkOptions(sellItemButtonsDiv, item, sellSummaryDiv, "sell");
+        } else {
+          addItemToSummary(item.name, 1, item.price, sellSummaryDiv);
         }
       }
 
@@ -1668,6 +1645,39 @@
         }
       }
 
+      function handleRoleTurnIn(item, summaryDiv) {
+        switch (item.name) {
+          case "Cannabis":
+            addItemToSummary(item.name, 1200, item.price, summaryDiv);
+            break;
+          case "Cigarettes":
+            addItemToSummary(item.name, 350, item.price, summaryDiv);
+            break;
+          case "Hockey Stick":
+            addItemToSummary(item.name, 50, item.price, summaryDiv);
+            break;
+          case "Meat Tenderizers":
+            addItemToSummary(item.name, 50, item.price, summaryDiv);
+            break;
+          case "Set of 4 Teddy Bears":
+            addItemToSummary(item.name, 5, item.price, summaryDiv);
+            break;
+          case "Books":
+            addItemToSummary(item.name, 350, item.price, summaryDiv);
+            addItemToSummary("Bible", 1, 10000, summaryDiv);
+            break;
+          case "Bear Pelt":
+            addItemToSummary("Bear Pelt", 6, 800, summaryDiv);
+            addItemToSummary("Wolf Pelt", 12, 400, summaryDiv);
+            addItemToSummary("Boar Pelt", 6, 500, summaryDiv);
+            addItemToSummary("Deer Pelt", 20, 300, summaryDiv);
+            alert("Remember to collect 5 rabbit pelts too!");
+            break;
+          default:
+            console.log("No role turn-in available for this item.");
+        }
+      }
+
       function updateSummaryItem(div, quantity, basePrice) {
         let itemName = div.dataset.itemName;
         let discountedPrice = calculateDiscountedPrice(itemName, basePrice);
@@ -1701,45 +1711,18 @@
       function populateSellButtons() {
         const itemButtonsDiv = document.getElementById("itemButtons");
         clearItemButtons(itemButtonsDiv);
-        let peltItems = sellitems.filter((item) => item.name.includes("Pelt"));
-        sellitems.forEach((item) => {
-          if (
-            !item.name.includes("Pelt") &&
-            item.name !== "Books" &&
-            item.name !== "Bible"
-          ) {
-            createButton(itemButtonsDiv, item.name, () =>
-              handleSellItemClick(item.name)
-            );
-          }
+        sellitems.forEach(item => {
+          createButton(itemButtonsDiv, item.name, () => handleSellItemClick(item));
         });
-        createButton(itemButtonsDiv, "Pelts", () =>
-          populatePeltButtons(itemButtonsDiv, peltItems)
-        );
-        createButton(itemButtonsDiv, "Books", () => handleSellItemClick("Books"));
-        createButton(itemButtonsDiv, "Bible", () =>
-          addItemToSummary("Bible", 1, 10000, sellSummaryDiv)
-        ); // Set initial price to 10000
-        addReturnButton(itemButtonsDiv, true); // Add return button to all levels except the top
-      }
-
-      function populatePeltButtons(itemButtonsDiv, peltItems) {
-        sellNavigationStack.push(sellitems); // Push the current sell items to the navigation stack
-        clearItemButtons(itemButtonsDiv);
-        peltItems.forEach((pelt) => {
-          let button = document.createElement("button");
-          button.textContent = pelt.name;
-          button.className = "item-button";
-          button.onclick = () =>
-            addItemToSummary(pelt.name, 1, pelt.price, sellSummaryDiv);
-          itemButtonsDiv.appendChild(button);
-        });
-        createButton(itemButtonsDiv, "Role Turn-In", () => {
-          addItemToSummary("Bear Pelt", 6, 800, sellSummaryDiv);
-          addItemToSummary("Wolf Pelt", 12, 400, sellSummaryDiv);
-          addItemToSummary("Boar Pelt", 6, 500, sellSummaryDiv);
-          addItemToSummary("Deer Pelt", 20, 300, sellSummaryDiv);
-          alert("Remember to collect 5 rabbit pelts too!");
+        createButton(itemButtonsDiv, "Pelts", () => {
+          clearItemButtons(itemButtonsDiv);
+          pelts.forEach(pelt => {
+            createButton(itemButtonsDiv, pelt.name, () => handleSellItemClick(pelt));
+          });
+          createButton(itemButtonsDiv, "Role Turn-In", () => {
+            handleRoleTurnIn({ name: "Bear Pelt" }, sellSummaryDiv);
+          });
+          addReturnButton(itemButtonsDiv, "sell");
         });
         addReturnButton(itemButtonsDiv, "sell");
       }
