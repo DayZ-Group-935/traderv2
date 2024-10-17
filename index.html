@@ -1690,19 +1690,23 @@
     }
 
     function handleBuyItemClick(item) {
-      if (item.bulkOptions) {
-        populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv, "buy");
-      } else if (item.name === "IED Complete") {
-        addItemToSummary("IED Container", 1, 400, buySummaryDiv);
-        addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
-        addItemToSummary("Detonator", 1, 100, buySummaryDiv);
-      } else if (item.name === "Humvee") {
-    addItemToSummary(item.name, 1, item.price, buySummaryDiv);
-    alert("Purchased Humvee will last until destroyed or until car wipe!");
+  if (item.bulkOptions) {
+    // If the item has bulk options, populate the bulk selection options
+    populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv, "buy");
+  } else if (item.name === "IED Complete") {
+    // Specific items with required sub-components
+    addItemToSummary("IED Container", 1, 400, buySummaryDiv);
+    addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
+    addItemToSummary("Detonator", 1, 100, buySummaryDiv);
   } else {
-        addItemToSummary(item.name, 1, item.price, buySummaryDiv);
-      }
+    // Handle general items
+    addItemToSummary(item.name, 1, item.price, buySummaryDiv);
+    if (item.name === "Humvee") {
+      alert("Purchased Humvee will last until destroyed or until car wipe!");
     }
+  }
+}
+
 
     function handleSellItemClick(item) {
       if (item.bulkOptions) {
@@ -1794,10 +1798,6 @@
           addItemToSummary("Deer Pelt", 20, 300, summaryDiv);
           alert("Remember to collect 5 rabbit pelts too!");
           break;
-              case "Humvee":
-      addItemToSummary("Humvee", 1, 15000, summaryDiv);
-      alert("Purchased Humvee will last until destroyed or until car wipe!");
-      break;
         default:
           console.log("No role turn-in available for this item.");
       }
