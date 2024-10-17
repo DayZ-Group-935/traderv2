@@ -1239,6 +1239,48 @@
         price: 3000
       }
     ],
+
+
+"Sakhal Only": [
+        {
+          name: "Ski Goggles",
+          price: 500
+        },
+                {
+          name: "Tactical Pack",
+          price: 700
+        },
+                {
+          name: "Gas Stove",
+          price: 1000
+        },
+                {
+          name: "Chelating Tablets",
+          price: 500
+        },
+                {
+          name: "Lighter",
+          price: 250
+        },
+                {
+          name: "Filtering Bottle",
+          price: 1000
+        },
+                {
+          name: "SVAL",
+          price: 2500
+        },
+                {
+          name: "SVAL 30Rnd Mag",
+          price: 500,
+          bulkOptions: [1, 2, 5]
+        },
+                {
+          name: "Humvee",
+          price: 15000
+        }
+        ],
+
     "Vehicles": {
       "Repair": [{
           name: "Jerry Can",
@@ -1298,48 +1340,8 @@
           name: "Truck Tires",
           price: 500
         }
-      ],
-
-
-        "Sakhal Only": [
-        {
-          name: "Ski Goggles",
-          price: 500
-        },
-                {
-          name: "Tactical Pack",
-          price: 700
-        },
-                {
-          name: "Gas Stove",
-          price: 1000
-        },
-                {
-          name: "Chelating Tablets",
-          price: 500
-        },
-                {
-          name: "Lighter",
-          price: 250
-        },
-                {
-          name: "Filtering Bottle",
-          price: 1000
-        },
-                {
-          name: "SVAL",
-          price: 2500
-        },
-                {
-          name: "SVAL 30Rnd Mag",
-          price: 500,
-          bulkOptions: [1, 2, 5]
-        },
-                {
-          name: "Humvee",
-          price: 15000
-        }
-        ]
+      ]
+    }
   };
 
   const sellitems = [{
@@ -1409,11 +1411,6 @@
     {
       name: "Bear Pelt",
       price: 800,
-      bulkOptions: [1, 5, 10]
-    },     
-    {
-      name: "Fox Pelt",
-      price: 400,
       bulkOptions: [1, 5, 10]
     }
   ];
@@ -1690,23 +1687,16 @@
     }
 
     function handleBuyItemClick(item) {
-  if (item.bulkOptions) {
-    // If the item has bulk options, populate the bulk selection options
-    populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv, "buy");
-  } else if (item.name === "IED Complete") {
-    // Specific items with required sub-components
-    addItemToSummary("IED Container", 1, 400, buySummaryDiv);
-    addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
-    addItemToSummary("Detonator", 1, 100, buySummaryDiv);
-  } else {
-    // Handle general items
-    addItemToSummary(item.name, 1, item.price, buySummaryDiv);
-    if (item.name === "Humvee") {
-      alert("Purchased Humvee will last until destroyed or until car wipe!");
+      if (item.bulkOptions) {
+        populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv, "buy");
+      } else if (item.name === "IED Complete") {
+        addItemToSummary("IED Container", 1, 400, buySummaryDiv);
+        addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
+        addItemToSummary("Detonator", 1, 100, buySummaryDiv);
+      } else {
+        addItemToSummary(item.name, 1, item.price, buySummaryDiv);
+      }
     }
-  }
-}
-
 
     function handleSellItemClick(item) {
       if (item.bulkOptions) {
