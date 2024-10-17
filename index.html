@@ -1299,7 +1299,48 @@
           price: 500
         }
       ]
+
     }
+
+        "Sakhal Only": {[
+        {
+          name: "Ski Goggles",
+          price: 500
+        },
+                {
+          name: "Tactical Pack",
+          price: 700
+        },
+                {
+          name: "Gas Stove",
+          price: 1000
+        },
+                {
+          name: "Chelating Tablets",
+          price: 500
+        },
+                {
+          name: "Lighter",
+          price: 250
+        },
+                {
+          name: "Filtering Bottle",
+          price: 1000
+        },
+                {
+          name: "SVAL",
+          price: 2500
+        },
+                {
+          name: "SVAL 30Rnd Mag",
+          price: 500,
+          bulkOptions: [1, 2, 5]
+        },
+                {
+          name: "Humvee",
+          price: 15000
+        }
+        ]
   };
 
   const sellitems = [{
@@ -1369,6 +1410,11 @@
     {
       name: "Bear Pelt",
       price: 800,
+      bulkOptions: [1, 5, 10]
+    },     
+    {
+      name: "Fox Pelt",
+      price: 400,
       bulkOptions: [1, 5, 10]
     }
   ];
@@ -1651,7 +1697,10 @@
         addItemToSummary("IED Container", 1, 400, buySummaryDiv);
         addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
         addItemToSummary("Detonator", 1, 100, buySummaryDiv);
-      } else {
+      } else if (item.name === "Humvee") {
+    addItemToSummary(item.name, 1, item.price, buySummaryDiv);
+    alert("Purchased Humvee will last until destroyed or until car wipe!");
+  } else {
         addItemToSummary(item.name, 1, item.price, buySummaryDiv);
       }
     }
@@ -1746,6 +1795,13 @@
           addItemToSummary("Deer Pelt", 20, 300, summaryDiv);
           alert("Remember to collect 5 rabbit pelts too!");
           break;
+        case "Humvee":
+          alert("Purchased Humvee will last until destroyed or until car wipe!");
+          break;
+              case "Humvee":
+      addItemToSummary("Humvee", 1, 15000, summaryDiv);
+      alert("Purchased Humvee will last until destroyed or until car wipe!");
+      break;
         default:
           console.log("No role turn-in available for this item.");
       }
