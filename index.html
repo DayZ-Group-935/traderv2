@@ -1693,6 +1693,9 @@
         addItemToSummary("IED Container", 1, 400, buySummaryDiv);
         addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
         addItemToSummary("Detonator", 1, 100, buySummaryDiv);
+      } else if (item.name === "Humvee") {
+        addItemToSummary("Humvee", 1, 15000, buySummaryDiv);
+        alert("Purchased Humvee will last until destroyed or until car wipe!");
       } else {
         addItemToSummary(item.name, 1, item.price, buySummaryDiv);
       }
