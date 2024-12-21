@@ -1826,6 +1826,34 @@
           addItemToSummary("Deer Pelt", 20, item.price, summaryDiv);
           addItemToSummary("Rabbit Pelt", 20, item.price, summaryDiv);
           break;
+        case "Boar Pelt":
+          addItemToSummary("Bear Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Wolf Pelt", 12, item.price, summaryDiv);
+          addItemToSummary("Boar Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Deer Pelt", 20, item.price, summaryDiv);
+          addItemToSummary("Rabbit Pelt", 20, item.price, summaryDiv);
+          break;
+        case "Wolf Pelt":
+          addItemToSummary("Bear Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Wolf Pelt", 12, item.price, summaryDiv);
+          addItemToSummary("Boar Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Deer Pelt", 20, item.price, summaryDiv);
+          addItemToSummary("Rabbit Pelt", 20, item.price, summaryDiv);
+          break;
+        case "Deer Pelt":
+          addItemToSummary("Bear Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Wolf Pelt", 12, item.price, summaryDiv);
+          addItemToSummary("Boar Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Deer Pelt", 20, item.price, summaryDiv);
+          addItemToSummary("Rabbit Pelt", 20, item.price, summaryDiv);
+          break;
+        case "Rabbit Pelt":
+          addItemToSummary("Bear Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Wolf Pelt", 12, item.price, summaryDiv);
+          addItemToSummary("Boar Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Deer Pelt", 20, item.price, summaryDiv);
+          addItemToSummary("Rabbit Pelt", 20, item.price, summaryDiv);
+          break;
         default:
           console.log("No role turn-in available for this item.");
       }
@@ -1871,9 +1899,6 @@
         clearItemButtons(itemButtonsDiv);
         pelts.forEach(pelt => {
           createButton(itemButtonsDiv, pelt.name, () => handleSellItemClick(pelt));
-        });
-        createButton(itemButtonsDiv, "Role Turn-In", () => {
-          handleRoleTurnIn({ name: "Bear Pelt" }, sellSummaryDiv);
         });
         addReturnButton(itemButtonsDiv, "sell");
       });
