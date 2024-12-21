@@ -1820,11 +1820,11 @@
           addItemToSummary("Bible", 1, 10000, summaryDiv);
           break;
         case "Bear Pelt":
-          addItemToSummary("Bear Pelt", 6, 800, summaryDiv);
-          addItemToSummary("Wolf Pelt", 12, 400, summaryDiv);
-          addItemToSummary("Boar Pelt", 6, 500, summaryDiv);
-          addItemToSummary("Deer Pelt", 20, 300, summaryDiv);
-          alert("Remember to collect 5 rabbit pelts too!");
+          addItemToSummary("Bear Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Wolf Pelt", 12, item.price, summaryDiv);
+          addItemToSummary("Boar Pelt", 6, item.price, summaryDiv);
+          addItemToSummary("Deer Pelt", 20, item.price, summaryDiv);
+          addItemToSummary("Rabbit Pelt", 20, item.price, summaryDiv);
           break;
         default:
           console.log("No role turn-in available for this item.");
