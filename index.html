@@ -411,9 +411,8 @@
 <script>
   // Define Items and Prices
   const buyitems = {
-    "Weapons": {
+    "Weapons": [
       Guns: {
-        Automatic: [{
             name: "Aug AX",
             price: 3000
           },
@@ -425,13 +424,8 @@
             name: "KAM",
             price: 2000
           },
-          {
-            name: "Vaiga",
-            price: 2000
-          }
-        ],
-        Ranged: [{
-            name: "Scar",
+		  {
+            name: "SCAR",
             price: 2500
           },
           {
@@ -439,68 +433,20 @@
             price: 3000
           },
           {
-            name: "M70 Tundra",
-            price: 2500
-          },
-          {
-            name: "VS89",
-            price: 2500
-          },
-          {
             name: "VSD",
             price: 2500    
           },
-          {
-            name: "Mosin",
-            price: 2000
-          }
-        ],
-        Misc: [{
+		  {
             name: "Crossbow",
             price: 1500
-          }
-        ],
-        Pistols: [{
-            name: "Revolver",
-            price: 750
           },
-          {
-            name: "Engraved Kolt",
-            price: 750
-          },
-          {
-            name: "Deagle",
-            price: 750
-          },
-          {
-            name: "MKII Pistol",
-            price: 750
-          },
-          {
-            name: "CR-75",
-            price: 750
-          },
-          {
-            name: "Mlock",
-            price: 750
-          }
-        ]
-      },
-      Melee: [{
-          name: "Fange Knife",
-          price: 250
-        },
-        {
+		  {
           name: "Combat Knife",
           price: 250
-        },
-        {
-          name: "Hunter Knife",
-          price: 250
-        }
-      ],
-      Attachments: {
-        Suppressors: [{
+          }
+		],
+      Attachments: [
+		  {
             name: "Standardized Suppressor",
             price: 1000
           },
@@ -509,20 +455,15 @@
             price: 1000
           },
           {
-            name: "Pistol Suppressor",
-            price: 250
-          },
-          {
             name: "Bottle Suppressor",
             price: 100
-          }
-        ],
-        "Weapon Parts": [{
+          },
+          {
             name: "LAR Lightweight Buttstock",
             price: 100
           },
           {
-            name: "Scar Buttstock",
+            name: "SCAR Buttstock",
             price: 100
           },
           {
@@ -530,46 +471,14 @@
             price: 100
           },
           {
-            name: "M4 Polymer Handguard",
-            price: 100
-          },
-          {
-            name: "M4 MP Handguard",
-            price: 100
-          },
-          {
-            name: "KA Handguard",
-            price: 100
-          },
-          {
-            name: "KA Buttstock",
-            price: 100
-          }
-        ]
-      },
-      Optics: {
-        "Short Range": [{
             name: "Red Dot (Baraka)",
             price: 300
           },
           {
-            name: "Kobra Sights",
+            name: "Holo Sight",
             price: 300
           },
-          {
-            name: "RVN Sights",
-            price: 300
-          },
-          {
-            name: "PSO-1 Scope",
-            price: 300
-          },
-          {
-            name: "BUIS Optic",
-            price: 300
-          }
-        ],
-        "Long Range": [{
+		  {
             name: "ATOG 4x",
             price: 300
           },
@@ -582,11 +491,10 @@
             price: 300
           },
           {
-            name: "Hunter Scope",     //add new scopes
+            name: "MKII Optic",
             price: 300
-          }
-        ],
-        "NV Optics": [{
+          },
+		  {
             name: "Starlight NV",
             price: 2000              
           },
@@ -597,98 +505,34 @@
         ]
       },
       Magazines: {
-        "Auto Mags": [{
-            name: "40 Round C-Mag",
-            price: 500
-          },
           {
             name: "60 Round C-Mag",
             price: 800
           },
           {
-            name: "30 Round KAM Poly Mag",
-            price: 200
-          },
-          {
             name: "75 Round KAM Drum Mag",
             price: 600
           },
-          {
-            name: "20 Round Vaiga Drum Mag",
-            price: 200
-          },
-          {
-            name: "30 Round AUR Mag",
-            price: 350
-          }
-        ],
-        "Sniper Mags": [{
+		  {
             name: "20 Round DMR Mag",
             price: 600
           },
           {
-            name: "20 Round Scar Mag",
+            name: "20 Round SCAR Mag",
             price: 600
           },
           {
             name: "10 Round VSD Mag",
             price: 300
           },
-          {
-            name: "10 Round VS89 Mag",
-            price: 300
-          }
-        ],
-        "Pistol Mags": [{
-            name: "Deagle Mag",
-            price: 250
-          },
-          {
-            name: "Kolt Mag",
-            price: 250
-          },
-          {
-            name: "MKII Mag",
-            price: 250
-          },
-          {
-            name: "CR-75 Mag",
-            price: 250
-          },
-          {
-            name: "Mlock Mag",
-            price: 250
-          }
-        ]
-      },
-      "Ammo": [{
-          name: ".357",
-          price: 100,
-          bulkOptions: [1, 5, 10]
-        },
-        {
-          name: "9x39 AP",
-          price: 300,
-          bulkOptions: [1, 5, 10]
-        },
-        {
-          name: "9x19mm",
-          price: 100,
-          bulkOptions: [1, 5, 10]
-        },
         {
           name: "5.56x45",
           price: 250,
           bulkOptions: [1, 5, 10]
         },
         {
-          name: ". WIN",
+          name: ".308 WIN",
           price: 500,
-          bulkOptions: [1, 5, 10]
-        },
-        {
-          name: "545x39",
-          price: 250,
           bulkOptions: [1, 5, 10]
         },
         {
@@ -702,17 +546,7 @@
           bulkOptions: [1, 5, 10]
         },
         {
-          name: ".45ACP",
-          price: 100,
-          bulkOptions: [1, 5, 10]
-        },
-        {
           name: "12GA Buck",
-          price: 100,
-          bulkOptions: [1, 5, 10]
-        },
-        {
-          name: "12GA Bean",
           price: 100,
           bulkOptions: [1, 5, 10]
         },
@@ -720,11 +554,6 @@
           name: "Crossbow Bolts",
           price: 400,
           bulkOptions: [1, 2, 5]
-        },
-        {
-          name: ".22LR",
-          price: 100,
-          bulkOptions: [1, 5, 10]
         }
       ]
     },
