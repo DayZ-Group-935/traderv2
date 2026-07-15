@@ -425,9 +425,13 @@
             name: "KAM",
             price: 2000
           },
+          {
+            name: "Vaiga",
+            price: 2000
+          }
         ],
         Ranged: [{
-            name: "Scar",
+            name: "LAR",
             price: 2500
           },
           {
@@ -439,21 +443,61 @@
             price: 2500
           },
           {
+            name: "VS89",
+            price: 2500
+          },
+          {
             name: "VSD",
             price: 2500    
           },
+          {
+            name: "Mosin",
+            price: 2000
+          }
         ],
         Misc: [{
             name: "Crossbow",
             price: 1500
           }
         ],
+        Pistols: [{
+            name: "Revolver",
+            price: 750
+          },
+          {
+            name: "Engraved Kolt",
+            price: 750
+          },
+          {
+            name: "Deagle",
+            price: 750
+          },
+          {
+            name: "MKII Pistol",
+            price: 750
+          },
+          {
+            name: "CR-75",
+            price: 750
+          },
+          {
+            name: "Mlock",
+            price: 750
+          }
+        ]
       },
-      Melee: [
+      Melee: [{
+          name: "Fange Knife",
+          price: 250
+        },
         {
           name: "Combat Knife",
           price: 250
         },
+        {
+          name: "Hunter Knife",
+          price: 250
+        }
       ],
       Attachments: {
         Suppressors: [{
@@ -465,13 +509,20 @@
             price: 1000
           },
           {
+            name: "Pistol Suppressor",
+            price: 250
+          },
+          {
             name: "Bottle Suppressor",
             price: 100
           }
         ],
-        "Weapon Parts": [
+        "Weapon Parts": [{
+            name: "LAR Lightweight Buttstock",
+            price: 100
+          },
           {
-            name: "Scar Buttstock",
+            name: "LAR Polymer Buttstock",
             price: 100
           },
           {
@@ -530,6 +581,10 @@
             name: "PU Scope",
             price: 300
           },
+          {
+            name: "Hunter Scope",     //add new scopes
+            price: 300
+          }
         ],
         "NV Optics": [{
             name: "Starlight NV",
@@ -559,6 +614,10 @@
             price: 600
           },
           {
+            name: "20 Round Vaiga Drum Mag",
+            price: 200
+          },
+          {
             name: "30 Round AUR Mag",
             price: 350
           }
@@ -568,14 +627,39 @@
             price: 600
           },
           {
-            name: "20 Round Scar Mag",
+            name: "20 Round LAR Mag",
             price: 600
           },
           {
             name: "10 Round VSD Mag",
             price: 300
           },
+          {
+            name: "10 Round VS89 Mag",
+            price: 300
+          }
         ],
+        "Pistol Mags": [{
+            name: "Deagle Mag",
+            price: 250
+          },
+          {
+            name: "Kolt Mag",
+            price: 250
+          },
+          {
+            name: "MKII Mag",
+            price: 250
+          },
+          {
+            name: "CR-75 Mag",
+            price: 250
+          },
+          {
+            name: "Mlock Mag",
+            price: 250
+          }
+        ]
       },
       "Ammo": [{
           name: ".357",
@@ -666,6 +750,10 @@
           price: 300
         },
         {
+          name: "Witch Hood",
+          price: 500
+        },
+        {
           name: "BDU Helmet",
           price: 800
         },
@@ -699,7 +787,10 @@
           price: 600
         }
       ],
-      Backpacks: [
+      Backpacks: [{
+          name: "Field Bag",
+          price: 750
+        },
         {
           name: "Hunter Backpack",
           price: 400
@@ -713,13 +804,17 @@
           price: 400
         },
         {
+          name: "Black Drybag",
+          price: 400
+        },
+        {
           name: "Assault Bag",
           price: 200
         },
-		{
-          name: "Long Haul Backpack",
+        {
+          name: "Black Sling",     //add black sling bags for 200
           price: 200
-        },
+        }
       ],
       "Plate Carriers": [{
           name: "Plate Carrier",
@@ -788,6 +883,10 @@
           name: "Green Jungle Boots",
           price: 300
         },
+        {
+          name: "Hunter Boots",
+          price: 300
+        }
       ],
       Ghillie: [{
           name: "Ghillie Suit",
@@ -815,18 +914,6 @@
           price: 250
         },
         {
-          name: "Pink Bandana",
-          price: 250
-        },
-        {
-          name: "Blue Bandana",
-          price: 250
-        },
-        {
-          name: "Polka Dot Bandana",
-          price: 250
-        },
-        {
           name: "Green Ski Mask",
           price: 200
         },
@@ -850,7 +937,7 @@
           name: "Piggy Ski Mask",
           price: 200
         },
-	    {
+	{
           name: "Shemagh Headwrap",
           price: 1000
         },
@@ -874,6 +961,10 @@
         {
           name: "Bandages",
           price: 200
+        },
+        {
+          name: "Saline Bag",
+          price: 400
         },
         {
           name: "Tetracycline",
@@ -900,9 +991,25 @@
           price: 300
         },
         {
+          name: "Blood Test Kit",
+          price: 100
+        },
+        {
+          name: "Blood Collection Kit",
+          price: 200
+        },
+        {
+          name: "IV Start Kit",
+          price: 100
+        },
+        {
           name: "Chlorine Tablets",
           price: 150
         },
+	{
+          name: "Chelating Tablets",
+          price: 500
+        }
       ],
       Miscellaneous: [{
           name: "Canteen",
@@ -922,12 +1029,24 @@
           price: 500
         },
         {
+          name: "Construction Light",
+          price: 400
+        },
+        {
+          name: "Cable Reel",
+          price: 400
+        },
+        {
           name: "Faction Flags",
           price: 500
         },
         {
           name: "Power Generator",
           price: 800
+        },
+        {
+          name: "Megaphone",
+          price: 300
         },
         {
           name: "Gun Cleaning Kit",
@@ -961,7 +1080,11 @@
           name: "Water Bottle",
           price: 100
         },
-	    {
+        {
+          name: "Soda",
+          price: 100
+        },
+	{
           name: "Gas Stove",
           price: 1000
         },
@@ -969,12 +1092,40 @@
           name: "Cooking Pot",
           price: 500
         },
-	    {
+	{
           name: "Filtering Bottle",
           price: 1000
-        }, 
-	],
-      "Explosives": [{
+        },
+	{
+          name: "Fishing Rod",
+          price: 1000
+        },
+                  {
+          name: "Fishing Hook",
+          price: 500
+        }
+      ]
+    },
+    Explosives: {
+      "IED Components": [{
+          name: "IED Container",
+          price: 400
+        },
+        {
+          name: "Plastic Explosives",
+          price: 5000
+        },
+        {
+          name: "Detonator",
+          price: 100
+        },
+        {
+          name: "IED Complete",
+          price: 10500,
+          bulkOptions: [1, 2, 5]
+        }
+      ],
+      "Other Explosives": [{
           name: "US/RUS Grenades",
           price: 750,
           bulkOptions: [1, 5, 10]
@@ -1033,8 +1184,8 @@
     ],
     "Building": [{
         name: "Box of Nails",
-        price: 7000,
-        bulkOptions: [1, 5]
+        price: 2500,
+        bulkOptions: [1, 5, 10, 20]
       },
       {
         name: "Sharpening Stones",
@@ -1172,11 +1323,6 @@
       bulkOptions: [1, 5, 10]
     },
     {
-      name: "Set of 4 Leaf Crowns",
-      price: 1000,
-      bulkOptions: [1]
-    },
-    {
       name: "Meat Tenderizers",
       price: 300,
       bulkOptions: [1, 5, 10]
@@ -1260,17 +1406,11 @@
       }
     },
     Librarian: {
-      description: "Sell 250 books and 1 bible in one sale.",
+      description: "Sell 350 books and 1 bible in one sale.",
       bonuses: {
         Books: 500 //new price sold for
       }
     },
-	Crown Royal: {
-      description: "Sell 4 full sets of Leaf Crowns in one sale.",
-      bonuses: {
-        Books: 500 //new price sold for
-      }
-	},
     Mayweather: {
       description: "Win a boxing tournament.",
       discounts: {
