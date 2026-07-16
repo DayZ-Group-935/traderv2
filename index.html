@@ -1253,9 +1253,13 @@
             addItemToSummary("IED Container", 1, 400, buySummaryDiv);
             addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
             addItemToSummary("Detonator", 1, 100, buySummaryDiv);
+            alert("Currently not for sale - TBD");
           } else if (item.name === "Trader Truck") {
             addItemToSummary("Trader Truck", 1, 150000, buySummaryDiv);
             alert("Purchased Truck will last until destroyed or until car wipe!");
+          } else if (item.name === "Trader Truck") {
+            addItemToSummary("Trader Car", 1, 40000, buySummaryDiv);
+            alert("Only sell with admin approval!");
           } else {
             addItemToSummary(item.name, 1, item.price, buySummaryDiv);
           }
