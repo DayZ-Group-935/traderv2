@@ -1477,7 +1477,11 @@
             button.addEventListener("click", function() {
               this.classList.toggle("active");
               updateRoleEffects();
-              alert(role.description);
+              // Get the role name from the button and look it up
+    const roleName = this.dataset.role;
+    if (roles[roleName] && roles[roleName].description) {
+      alert(roles[roleName].description);
+    }
             });
           });
           clearAllBtn.addEventListener("click", clearAllTransactions);
