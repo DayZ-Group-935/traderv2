@@ -406,8 +406,7 @@
       // Define Items and Prices
       const buyitems = {
         "Weapons": {
-          Guns: {
-            Automatic: [{
+            Weapons: [{
               name: "Aug AX",
               price: 3000
             }, {
@@ -419,8 +418,7 @@
             },{
               name: "KAM",
               price: 2000
-            }],
-            Ranged: [{
+            },{
               name: "DMR",
               price: 3000
             }, {
@@ -429,9 +427,7 @@
             },{
               name: "Crossbow",
               price: 1500
-            }]
-          },
-          Melee: [{
+            },{
             name: "Combat Knife",
             price: 250
           }],
@@ -475,7 +471,7 @@
               price: 300
             }, {
               name: "MKII Optic", //add new scopes
-              price: 300
+              price: 500
             }],
             "NV Optics": [{
               name: "Starlight NV",
@@ -487,20 +483,20 @@
           },
           Magazines: {
             "Auto Mags": [{
-              name: "60 Round C-Mag",
+              name: "60Rd C-Mag",
               price: 800
             }, {
-              name: "75 Round KAM Drum Mag",
+              name: "75Rd KAM Drum Mag",
               price: 600
             }, {
-              name: "20 Round SCAR Mag",
+              name: "20Rd SCAR Mag",
               price: 600
             }],
             "Sniper Mags": [{
-              name: "20 Round DMR Mag",
+              name: "20Rd DMR Mag",
               price: 600
             }, {
-              name: "10 Round VSD Mag",
+              name: "10Rd VSD Mag",
               price: 300
             }]
           },
@@ -1126,7 +1122,7 @@
             "VSD": 25,
             "PU Scope": 25,
             "MKII Optic": 25,
-            "10 Round VSD Mag": 25,
+            "10Rd VSD Mag": 25,
             "7.62x54mmR": 25,
             ".308 WIN": 25,
             "Rangefinder": 25
@@ -1137,8 +1133,8 @@
           discounts: {"VSD": 50,
             "PU Scope": 50,
             "MKII Optic": 50,
-            "10 Round VSD Mag": 50,
-            "10 Round VS89 Mag": 50,
+            "10Rd VSD Mag": 50,
+            "10Rd VS89 Mag": 50,
             "7.62x54mmR": 50,
             ".308 WIN": 50,
             "Rangefinder": 50
@@ -1257,9 +1253,9 @@
             addItemToSummary("IED Container", 1, 400, buySummaryDiv);
             addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
             addItemToSummary("Detonator", 1, 100, buySummaryDiv);
-          } else if (item.name === "Humvee") {
-            addItemToSummary("Humvee", 1, 15000, buySummaryDiv);
-            alert("Purchased Humvee will last until destroyed or until car wipe!");
+          } else if (item.name === "Trader Truck") {
+            addItemToSummary("Trader Truck", 1, 150000, buySummaryDiv);
+            alert("Purchased Truck will last until destroyed or until car wipe!");
           } else {
             addItemToSummary(item.name, 1, item.price, buySummaryDiv);
           }
