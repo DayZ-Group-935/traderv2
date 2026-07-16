@@ -954,65 +954,74 @@
       };
       const sellitems = [{
         name: "Hockey Stick",
-        price: 750,
+        price: 1013,
         bulkOptions: [1, 5, 10]
       }, {
         name: "Meat Tenderizers",
-        price: 300,
+        price: 405,
         bulkOptions: [1, 5, 10]
       }, {
         name: "Cigarettes",
-        price: 100,
+        price: 135,
         bulkOptions: [1, 10, 50, 100]
       }, {
         name: "Books",
-        price: 250,
+        price: 338,
         bulkOptions: [1, 5, 20]
       }, {
         name: "Bible",
         price: 10000
       }, {
         name: "Golden Deagle",
-        price: 25000
+        price: 33750
+      }, {
+        name: "Leaf Crown",
+        price: 1250
       }, {
         name: "Faction Flag",
-        price: 5000
+        price: 6750
+      }, {
+        name: "Mess Tin",
+        price: 810
+      }, {
+        name: "Punched Card",
+        price: 8100
       }, {
         name: "Set of 4 Teddy Bears",
-        price: 2000,
+        price: 2700,
         bulkOptions: [1]
       }, {
         name: "Cannabis",
-        price: 10,
+        price: 14,
         bulkOptions: [1, 10, 50, 100]
       }, {
         name: "Tanned Leather",
-        price: 300,
+        price: 405,
         bulkOptions: [1, 8]
       }];
       const pelts = [{
         name: "Deer Pelt",
-        price: 400,
+        price: 540,
         bulkOptions: [1, 5, 10]
       }, {
         name: "Boar Pelt",
-        price: 600,
+        price: 810,
         bulkOptions: [1, 5, 10]
       }, {
         name: "Wolf Pelt",
-        price: 600,
+        price: 810,
         bulkOptions: [1, 5, 10]
       }, {
         name: "Bear Pelt",
-        price: 1000,
+        price: 1350,
         bulkOptions: [1, 5, 10]
       }, {
         name: "Fox Pelt",
-        price: 300,
+        price: 405,
         bulkOptions: [1, 5, 10]
       }, {
         name: "Rabbit Pelt",
-        price: 250,
+        price: 388,
         bulkOptions: [1, 5, 10]
       }];
       const roles = {
@@ -1130,11 +1139,11 @@
         },
         Deadshot: {
           description: "Get a sniper kill at a range of over 800m.",
-          discounts: {"VSD": 50,
+          discounts: {
+            "VSD": 50,
             "PU Scope": 50,
             "MKII Optic": 50,
             "10Rd VSD Mag": 50,
-            "10Rd VS89 Mag": 50,
             "7.62x54mmR": 50,
             ".308 WIN": 50,
             "Rangefinder": 50
@@ -1329,9 +1338,14 @@
           switch (item.name) {
             case "Cannabis":
               addItemToSummary(item.name, 1200, item.price, summaryDiv);
+             alert("Any ruined cannabis is ineligible for turn in.");
               break;
             case "Cigarettes":
               addItemToSummary(item.name, 250, item.price, summaryDiv);
+              break;
+            case "Leaf Crown":
+              addItemToSummary(item.name, 4, item.price, summaryDiv);
+            alert("Must be all four different Leaf Crowns - Spring, Summer, Autumnm and Winter!");
               break;
             case "Hockey Stick":
               addItemToSummary(item.name, 50, item.price, summaryDiv);
