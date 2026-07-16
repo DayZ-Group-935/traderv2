@@ -802,7 +802,7 @@
             bulkOptions: [1, 2, 5]
           }],
           "Other Explosives": [{
-            name: "US/RUS Grenades",
+            name: "Grenade",
             price: 750,
             bulkOptions: [1, 5, 10]
           }, {
@@ -1026,22 +1026,28 @@
         bulkOptions: [1, 5, 10]
       }];
       const roles = {
-        Kamikaze: {
+        "Kamikaze": {
           description: "Blow yourself up, killing 2 enemy players.",
           discounts: {
-            "US/RUS Grenades": 25
+            "Grenade": 25
           }
         },
-        Librarian: {
+        "Librarian": {
           description: "Sell 350 books and 1 bible in one sale.",
           bonuses: {
             Books: 500 //new price sold for
           }
         },
-        Mayweather: {
+        "Mayweather": {
           description: "Win a boxing tournament.",
           discounts: {
             Gloves: 100
+          }
+        },
+        "Julius Caesar": {
+          description: "Collect all four Leaf Crowns.",
+          bonuses: {
+            "Leaf Crown": 5000
           }
         },
         "Daryl Dixon": {
@@ -1051,7 +1057,7 @@
             "Crossbow Bolts": 50
           }
         },
-        Negan: {
+        "Negan": {
           description: "Kill a fully geared player with a barbed or nail bat.",
           discounts: {
             "Box of Nails": 20
@@ -1076,7 +1082,7 @@
         "Click Click Boom": {
           description: "Kill an enemy player with a claymore.",
           discounts: {
-            "US/RUS Grenades": 20,
+            "Grenade": 20,
             "POX Vial": 20,
             "Flashbangs": 20,
             "Land Mines": 20,
@@ -1085,7 +1091,7 @@
             "IED Container": 20
           }
         },
-        Roadkill: {
+        "Roadkill": {
           description: "Flatten a player with a vehicle at a speed of 70km/h or more.",
           discounts: {
             "Car Radiator": 25,
@@ -1126,7 +1132,7 @@
             "Boar Pelt": 900
           }
         },
-        Hotshot: {
+        "Hotshot": {
           description: "Get a sniper kill at a range of over 400m.",
           discounts: {
             "VSD": 25,
@@ -1138,7 +1144,7 @@
             "Rangefinder": 25
           }
         },
-        Deadshot: {
+        "Deadshot": {
           description: "Get a sniper kill at a range of over 800m.",
           discounts: {
             "VSD": 50,
@@ -1471,6 +1477,7 @@
             button.addEventListener("click", function() {
               this.classList.toggle("active");
               updateRoleEffects();
+              alert(role.description);
             });
           });
           clearAllBtn.addEventListener("click", clearAllTransactions);
