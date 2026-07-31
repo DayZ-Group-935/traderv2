@@ -787,18 +787,18 @@
           }]
         },
         Explosives: {
-          "OUT OF STOCK": [{
+          "Explosives": [{
             name: "IED Container",
-            price: 400
+            price: 1500
           }, {
             name: "Plastic Explosives",
-            price: 5000
+            price: 9000
           }, {
             name: "Detonator",
-            price: 100
+            price: 500
           }, {
             name: "IED Complete",
-            price: 10500
+            price: 20000
           }],
           "Other Explosives": [{
             name: "Grenade",
@@ -819,6 +819,9 @@
           }, {
             name: "Claymores",
             price: 1000
+          }, {
+            name: "Bear-Nades",
+            price: 15000
           }]
         },
         Storage: [{
@@ -1265,10 +1268,10 @@
           if (item.bulkOptions) {
             populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv, "buy");
           } else if (item.name === "IED Complete") {
-            addItemToSummary("IED Container", 1, 400, buySummaryDiv);
-            addItemToSummary("Plastic Explosives", 2, 3000, buySummaryDiv);
-            addItemToSummary("Detonator", 1, 100, buySummaryDiv);
-            alert("Currently not for sale - TBD");
+            addItemToSummary("IED Container", 1, 1500, buySummaryDiv);
+            addItemToSummary("Plastic Explosives", 2, 9000, buySummaryDiv);
+            addItemToSummary("Detonator", 1, 500, buySummaryDiv);
+            alert("LIMITED TIME ONLY");
           } else if (item.name === "Trader Truck") {
             addItemToSummary("Trader Truck", 1, 150000, buySummaryDiv);
             alert("Purchased Truck will last until destroyed or until car wipe!");
