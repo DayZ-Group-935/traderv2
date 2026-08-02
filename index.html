@@ -978,6 +978,10 @@
         price: 900,
         bulkOptions: [1, 5, 10]
       }, {
+        name: "Powdered Milk",
+        price: 0,
+        bulkOptions: [0]
+      }, {
         name: "Compass",
         price: 500,
         bulkOptions: [1, 2, 5]
@@ -1181,6 +1185,13 @@
             "POX Antidote": 50
           }
         },
+        "The Milkman": {
+          description: "Turn in 50 Powdered Milk to Trader.",
+		  discounts: {
+            "Saline Bag": 50,
+            "Canteen": 50
+          }
+        },
         "Pathfinder": {
           description: "Turn in 50 Compasses to Trader",
           bonuses: {
@@ -1374,13 +1385,16 @@
               addItemToSummary(item.name, 250, item.price, summaryDiv);
               break;
 			case "Syringe":
-              addItemToSummary(item.name, 900, item.price, summaryDiv);
+              addItemToSummary(item.name, 100, item.price, summaryDiv);
+              break;
+			case "Powdered Milk":
+              addItemToSummary(item.name, 50, 1000, summaryDiv);
               break;
 			case "Pink Derringer":
-              addItemToSummary(item.name, 4000, item.price, summaryDiv);
+              addItemToSummary(item.name, 30, item.price, summaryDiv);
               break;
 			case "Compass":
-              addItemToSummary(item.name, 500, item.price, summaryDiv);
+              addItemToSummary(item.name, 50, item.price, summaryDiv);
               break;
             case "Set of Leaf Crown":
               addItemToSummary(item.name, 4, item.price, summaryDiv);
