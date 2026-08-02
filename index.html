@@ -470,7 +470,7 @@
               name: "PU Scope",
               price: 300
             }, {
-              name: "MKII Optic", //add new scopes
+              name: "MKII Optic",
               price: 500
             }],
             "NV Optics": [{
@@ -648,28 +648,31 @@
             price: 250
           }, {
             name: "Green Ski Mask",
-            price: 200
+            price: 400
           }, {
             name: "Black Ski Mask",
-            price: 200
+            price: 400
           }, {
             name: "Skull Ski Mask",
-            price: 200
+            price: 400
           }, {
             name: "BDU Ski Mask",
-            price: 200
+            price: 400
           }, {
             name: "Chain Ski Mask",
-            price: 200
+            price: 500
           }, {
             name: "Piggy Ski Mask",
-            price: 200
+            price: 500
           }, {
             name: "Mime Mask",
-            price: 250
+            price: 350
           }, {
             name: "Ski Goggles",
             price: 500
+          }, {
+            name: "Shemagh",
+            price: 400
           }]
         },
         "Meds & Tools": {
@@ -728,20 +731,11 @@
             name: "Bear Trap",
             price: 500
           }, {
-            name: "Construction Light",
-            price: 400
-          }, {
-            name: "Cable Reel",
-            price: 400
-          }, {
             name: "Faction Flags",
             price: 500
           }, {
             name: "Power Generator",
             price: 800
-          }, {
-            name: "Megaphone",
-            price: 300
           }, {
             name: "Gun Cleaning Kit",
             price: 400
@@ -770,20 +764,8 @@
             name: "Soda",
             price: 100
           }, {
-            name: "Gas Stove",
-            price: 1000
-          }, {
-            name: "Cooking Pot",
-            price: 500
-          }, {
             name: "Filtering Bottle",
             price: 1000
-          }, {
-            name: "Fishing Rod",
-            price: 1000
-          }, {
-            name: "Fishing Hook",
-            price: 500
           }]
         },
         Explosives: {
@@ -977,15 +959,23 @@
         name: "Golden Deagle",
         price: 33750
       }, {
-        name: "Leaf Crown",
-        price: 1250,
-        bulkOptions: [1, 4]
+        name: "Set of Leaf Crown",
+        price: 1250
       }, {
         name: "Faction Flag",
         price: 6750
       }, {
         name: "Mess Tin",
         price: 810
+      }, {
+        name: "Pink Derringer",
+        price: 4000
+      }, {
+        name: "Syringe",
+        price: 900
+      }, {
+        name: "Compass",
+        price: 500
       }, {
         name: "Punched Card",
         price: 8100
@@ -1047,9 +1037,9 @@
           }
         },
         "Julius Caesar": {
-          description: "Collect all four Leaf Crowns.",
+          description: "Collect four sets of all four Leaf Crowns.",
           bonuses: {
-            "Leaf Crown": 5000
+            "Set of Leaf Crown": 5000
           }
         },
         "Daryl Dixon": {
@@ -1161,13 +1151,39 @@
         "Dr. Greenthumb": {
           description: "Sell 1200 pieces of Cannabis in a single trip.",
           bonuses: {
-            Cannabis: 30
+            "Cannabis": 30
           }
         },
         "Marlboro Man": {
           description: "Sell 250 Cigarettes in a single trip.",
           bonuses: {
-            Cigarettes: 500
+            "Cigarettes": 500
+          }
+        },
+        "Rose Reaper": {
+          description: "Turn in 30 Pink Derringers to Trader.",
+          bonuses: {
+            "Pink Derringer": 6500
+          }
+        },
+        "The Vaccinator": {
+          description: "Turn in 100 Syringes to Trader.",
+          bonuses: {
+            "Syringe": 1500
+          },
+		  discounts: {
+            "NBC Filters": 50,
+            "POX Antidote": 50
+          }
+        },
+        "Pathfinder": {
+          description: "Turn in 50 Compasses to Trader",
+          bonuses: {
+            "Compass": 1000
+          },
+		  discounts: {
+            "Rangefinder": 100,
+            "Tourist Map": 100
           }
         },
         "Day One": {
@@ -1352,9 +1368,18 @@
             case "Cigarettes":
               addItemToSummary(item.name, 250, item.price, summaryDiv);
               break;
-            case "Leaf Crown":
+			case "Syringe":
+              addItemToSummary(item.name, 900, item.price, summaryDiv);
+              break;
+			case "Pink Derringer":
+              addItemToSummary(item.name, 4000, item.price, summaryDiv);
+              break;
+			case "Compass":
+              addItemToSummary(item.name, 500, item.price, summaryDiv);
+              break;
+            case "Set of Leaf Crown":
               addItemToSummary(item.name, 4, item.price, summaryDiv);
-            alert("Must be all four different Leaf Crowns - Spring, Summer, Autumnm and Winter!");
+            alert("Each set must be all four different Leaf Crowns - Spring, Summer, Autumnm and Winter!");
               break;
             case "Hockey Stick":
               addItemToSummary(item.name, 50, item.price, summaryDiv);
