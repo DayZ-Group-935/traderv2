@@ -691,6 +691,9 @@
           }, {
             name: "Shemagh",
             price: 600
+          }, {
+            name: "Santa Beard",
+            price: 600
           }]
         },
         "Meds & Tools": {
@@ -1335,6 +1338,9 @@
           } else if (item.name === "Trader Truck") {
             addItemToSummary("Trader Truck", 1, item.price, buySummaryDiv);
             alert("Trader will deploy at rear of building. Stand clear of drop zone.");
+		  } else if (item.name === "Santa Beard") {
+            addItemToSummary("Santa Beard", 1, item.price, buySummaryDiv);
+            alert("Only available with player kits - limited time only!");
           } else if (item.name === "Trader Car") {
             addItemToSummary("Trader Car", 1, item.price, buySummaryDiv);
             alert("Only sell with admin approval!");
