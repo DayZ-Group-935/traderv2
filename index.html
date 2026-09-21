@@ -792,16 +792,16 @@
         Explosives: {
           "Explosives": [{
             name: "IED Container",
-            price: 1500
+            price: 3500
           }, {
             name: "Plastic Explosives",
-            price: 9000
+            price: 18000
           }, {
             name: "Detonator",
             price: 500
           }, {
             name: "IED Complete",
-            price: 20000
+            price: 40000
           }],
           "Other Explosives": [{
             name: "Grenade",
@@ -1331,8 +1331,8 @@
           if (item.bulkOptions) {
             populateBulkOptions(buyItemButtonsDiv, item, buySummaryDiv, "buy");
           } else if (item.name === "IED Complete") {
-            addItemToSummary("IED Container", 1, 1500, buySummaryDiv);
-            addItemToSummary("Plastic Explosives", 2, 9000, buySummaryDiv);
+            addItemToSummary("IED Container", 1, 3500, buySummaryDiv);
+            addItemToSummary("Plastic Explosives", 2, 18000, buySummaryDiv);
             addItemToSummary("Detonator", 1, 500, buySummaryDiv);
             alert("LIMITED TIME ONLY");
           } else if (item.name === "Trader Truck") {
